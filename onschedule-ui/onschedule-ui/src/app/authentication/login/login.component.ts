@@ -19,16 +19,22 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector(".password").value
 
     if (username == "") {
-      Swal.fire(
-          'Username Should Not Be Empty', '',
-          'warning'
-      )
+      Swal.fire({
+        title: "Username Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
   }
   else if (password == "") {
-      Swal.fire(
-          'Password Should Not Be Empty', '',
-          'warning'
-      )
+      Swal.fire({
+        title: "Password Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
   }else{
     window.location.href="http://localhost:4200/dashboard";
   }
