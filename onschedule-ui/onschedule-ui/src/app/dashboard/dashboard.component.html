@@ -1,0 +1,658 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<div class="main-container d-flex">
+    <div class="sidebar position-fixed h-100" id="side_nav">
+        <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+            <h1 class="fs-4">
+                <span class="bg-white text-success rounded shadow px-2 me-2">OS</span>
+                <span class="text-white">OnSchedule</span>
+            </h1>
+            <button class="btn d-md-none d-block close-btn px-1 py-0 text-white">
+                <i class="fal fa-stream"></i>
+            </button>
+        </div>
+        <ul class="list-unstyled px-2">
+            <li class="active">
+                <a href="http://localhost:4200/dashboard#dashboard-content"
+                    class="text-decoration-none px-3 py-2 d-block">
+                    <i class="fal fa-home"></i> Dashboard</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#bookings" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-list"></i>
+                    Bookings</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#bus-details"
+                    class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                    <span><i class="fal fa-bus"></i> Bus Schedule</span>
+                    <!--<span class="bg-white rounded-pill text-dark py-0 px-2">02</span>-->
+                </a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#transition" class="text-decoration-none px-3 py-2 d-block">
+                    <i class="fal fa-envelope-open-dollar"></i> Transactions</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#Passenger" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-users"></i>
+                    Feedback</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#cancel" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-ban"></i> Booking Cancel</a>
+            </li>
+        </ul>
+        <hr class="h-color mx-2" />
+    </div>
+    <div class="content" id="dashboard-content">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light nav-bg">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between d-md-none d-block">
+                        <button class="btn px-1 py-0 open-btn me-2">
+                            <i class="fal fa-stream"></i>
+                        </button>
+                        <a class="navbar-brand fs-4" href="#"><span
+                                class="bg-white rounded px-2 py-0 text-success">OS</span></a>
+                    </div>
+                    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" aria-current="page" href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="dashboard-content px-3 pt-4">
+                <div class="row">
+                    <div class="col col-sm-12 col-b mb-2">
+                        <h1 class="text-center text-1">Bookings</h1>
+                        <h1 class="text-center text-1">130</h1>
+                    </div>
+                    <div class="col col-sm-12 col-b mb-2">
+                        <h1 class="text-center text-1">Buses</h1>
+                        <h1 class="text-center text-1">50</h1>
+                    </div>
+                    <div class="col col-sm-12 col-b mb-2">
+                        <h1 class="text-center text-1">Transactions</h1>
+                        <h1 class="text-center text-1">130</h1>
+                    </div>
+                </div>
+
+                <div class="card-header my-3 d-flex justify-content-between" id="bookings">
+                    <h2 class="font-weight-bold">Bookings</h2>
+                    <div class="d-flex">
+                        <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
+                            placeholder="Search Bookings" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--table-->
+
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">NIC Num</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Phone</th>
+                            <!--<th scope="col">Email</th>-->
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Seat Num</th>
+                            <th scope="col">Bus Num</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/03/2023</td>
+                            <td>635728916V</td>
+                            <td>XYZ</td>
+                            <td>1</td>
+                            <td>0767328394</td>
+                            <!--<td>example2023@gmail.com</td>-->
+                            <td>Colombo</td>
+                            <td>Kandy</td>
+                            <td>07</td>
+                            <td>LN-1256</td>
+                            <td>1.00 PM</td>
+                            <td>
+                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#editBookings">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-B">Cancel</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04/03/2023</td>
+                            <td>635728916V</td>
+                            <td>example</td>
+                            <td>2</td>
+                            <td>0767893256</td>
+                            <!--<td>example22023@gmail.com</td>-->
+                            <td>Monaragala</td>
+                            <td>Colombo</td>
+                            <td>17</td>
+                            <td>LA-4256</td>
+                            <td>08:40 AM</td>
+                            <td>
+                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#editBookings">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-B">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                <div class="card-header my-3 d-flex justify-content-between" id="bus-details">
+                    <h2 class="font-weight-bold">Bus Details</h2>
+                    <div class="d-flex">
+                        <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
+                            placeholder="Search Route" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-1" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        New Bus
+                    </button>
+                </div>
+                <!--table-->
+
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Vehicle Num</th>
+                            <th scope="col">Driver Name</th>
+                            <th scope="col">Conductor Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Route</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Arrival Time</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LN-1256</td>
+                            <td>XYZ</td>
+                            <td>xyz</td>
+                            <td>0767328394</td>
+                            <td>Colombo - Kandy</td>
+                            <td>Colombo-01:00 PM</td>
+                            <td>Kandy-05:00 PM</td>
+                            <td style="color: red; font-weight: bold">No</td>
+                            <td>
+                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#editBusDetails">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-bus">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LA-4256</td>
+                            <td>Test</td>
+                            <td>XYZ</td>
+                            <td>0789245367</td>
+                            <td>Monaragala - Colombo</td>
+                            <td>Monaragala-08:40 AM</td>
+                            <td>Colombo-05:00 PM</td>
+                            <td style="color: green; font-weight: bold">Yes</td>
+                            <td>
+                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#editBusDetails">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-bus">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                <div class="card-header my-3 d-flex justify-content-between" id="transition">
+                    <h2 class="font-weight-bold">Transacions Details</h2>
+                    <div class="d-flex">
+                        <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
+                            placeholder="Search Transactions" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Transaction ID</th>
+                            <th scope="col">Date and Time</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">NIC Num</th>
+                            <th scope="col">Passenger Name</th>
+                            <th scope="col">Bus Num</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Arrival Time</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>2023-02-14 10:30 AM</td>
+                            <td>RS. 2200</td>
+                            <td>321564789V</td>
+                            <td>Test1</td>
+                            <td>LA-4256</td>
+                            <td>Monaragala-08:40 AM</td>
+                            <td>Colombo-05:00 PM</td>
+                            <td>Colombo</td>
+                            <td>
+                                <a class="btn btn-success" href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>2023-01-14 01:30 AM</td>
+                            <td>RS. 1800</td>
+                            <td>234563879V</td>
+                            <td>Test2</td>
+                            <td>LN-1256</td>
+                            <td>Colombo-01:00 PM</td>
+                            <td>Kandy-05:00 PM</td>
+                            <td>Kandy</td>
+                            <td>
+                                <a class="btn btn-success" href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                <div class="card-header my-3 d-flex justify-content-between" id="Passenger">
+                    <h2 class="font-weight-bold">Passengers Feedback</h2>
+                    <div class="d-flex">
+                        <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
+                            placeholder="Search Feedback" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Passenger Name</th>
+                            <th scope="col">Date and Time</th>
+                            <th scope="col">Feedback</th>
+                            <th scope="col">Bus Num</th>
+                            <th scope="col">Bus Route</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Test_001</td>
+                            <td>2023-02-14 10:30 AM</td>
+                            <td style="width: 400px">
+                                I had a great experience on the bus. The driver and
+                                conductor were really friendly and helpful. Thank you!
+                            </td>
+                            <td>LN-1256</td>
+                            <td>Colombo - Kandy</td>
+                            <td>
+                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#editFeedback">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-f">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test_002</td>
+                            <td>2023-01-14 01:30 AM</td>
+                            <td>
+                                Bus arrived late at the stop by 15 minutes. It would be
+                                helpful to receive real-time updates on any delays or
+                                changes to the schedule
+                            </td>
+                            <td>LA-4256</td>
+                            <td>Monaragala - Colombo</td>
+                            <td>
+                                <a class="btn btn-success" href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger delete-f">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                <div class="card-header my-3 d-flex justify-content-between" id="cancel">
+                    <h2 class="font-weight-bold">Cancelled Bookings</h2>
+                    <div class="d-flex">
+                        <input type="text" class="form-control border-gray rounded-pill" style="width: 220px"
+                            placeholder="Search Cancelled Bookings" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--table-->
+
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">NIC Num</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Seat Num</th>
+                            <th scope="col">Bus Num</th>
+                            <th scope="col">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>635728916V</td>
+                            <td>XYZ</td>
+                            <td>1</td>
+                            <td>0767328394</td>
+                            <td>example2023@gmail.com</td>
+                            <td>Colombo</td>
+                            <td>Kandy</td>
+                            <td>07</td>
+                            <td>LN-1256</td>
+                            <td>1.00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>635728916V</td>
+                            <td>example</td>
+                            <td>2</td>
+                            <td>0767893256</td>
+                            <td>example22023@gmail.com</td>
+                            <td>Monaragala</td>
+                            <td>Colombo</td>
+                            <td>17</td>
+                            <td>LA-4256</td>
+                            <td>08:40 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add New Bus Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Bus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Num</label>
+                        <input type="text" class="form-control" id="Vehicle" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Driver Name</label>
+                        <input type="text" class="form-control" id="Driver" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Conductor Name</label>
+                        <input type="text" class="form-control" id="Conductor" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="Phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Departure Time</label>
+                        <input type="text" class="form-control" id="Departure" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Arrival Time</label>
+                        <input type="text" class="form-control" id="Arrival" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Availability</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Availability" id="availabilityYes"
+                                    value="Yes" />
+                                <label class="form-check-label" for="availabilityYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Availability" id="availabilityNo"
+                                    value="No" />
+                                <label class="form-check-label" for="availabilityNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border-top: 0 none">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success save_bus">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Bookings Modal -->
+<div class="modal fade" id="editBookings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Bookings</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">NIC Num</label>
+                        <input type="text" class="form-control" id="nic" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="fname" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lname" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">From</label>
+                        <input type="text" class="form-control" id="from" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">To</label>
+                        <input type="text" class="form-control" id="to" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Seat Num</label>
+                        <input type="text" class="form-control" id="seatnum" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Time</label>
+                        <input type="text" class="form-control" id="time" />
+                    </div>
+                    <div class="modal-footer" style="border-top: 0 none">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success edit-bookings">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit bus details Modal -->
+<div class="modal fade" id="editBusDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Bus Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Num</label>
+                        <input type="text" class="form-control" id="Vehicle" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Driver Name</label>
+                        <input type="text" class="form-control" id="Driver" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Conductor Name</label>
+                        <input type="text" class="form-control" id="Conductor" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="Phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Departure Time</label>
+                        <input type="text" class="form-control" id="Departure" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Arrival Time</label>
+                        <input type="text" class="form-control" id="Arrival" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Availability</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Availability" id="availabilityYes"
+                                    value="Yes" />
+                                <label class="form-check-label" for="availabilityYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Availability" id="availabilityNo"
+                                    value="No" />
+                                <label class="form-check-label" for="availabilityNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border-top: 0 none">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success edit-bookings">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Feedback Modal -->
+<div class="modal fade" id="editFeedback" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Feedbacks</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Passenger Name</label>
+                        <input type="text" class="form-control" id="Vehicle" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date and Time</label>
+                        <input type="text" class="form-control" id="Driver" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Feedback</label>
+                        <input type="text" class="form-control" id="Conductor" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bus Num</label>
+                        <input type="text" class="form-control" id="Phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bus Route</label>
+                        <input type="text" class="form-control" id="Departure" />
+                    </div>
+                    <div class="modal-footer" style="border-top: 0 none">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success edit-bookings">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.form-input {
+    background-color: lightgray;
+    font-size: 20px;
+    border-radius: 0px;
+}
+
+.form-input:focus {
+    border: 1px solid green;
+    box-shadow: 0 0 2px green;
+}
