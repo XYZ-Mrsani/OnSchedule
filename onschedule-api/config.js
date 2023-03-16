@@ -1,4 +1,4 @@
-const firebase = require("firebase");
+/*const firebase = require("firebase");
 
 const firebaseConfig = {
     apiKey: "AIzaSyAS0rEcNEHopXgu87coBo7nmqtWq8yVv2A",
@@ -34,7 +34,7 @@ class Bookings {
         const data = doc.data();
         const id = doc.id;
         const { date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = data;
-        return new User(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+        return new Bookings(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
     }
 
     toFirebaseData() {
@@ -55,4 +55,4 @@ class Bookings {
 
 const bookingsModel = db.collection("Bookings");
 
-module.exports = { Bookings, bookingsModel };
+module.exports = { Bookings, bookingsModel };*/
