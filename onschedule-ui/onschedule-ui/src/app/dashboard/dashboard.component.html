@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col col-sm-12 col-b mb-2">
                         <h1 class="text-center text-1">Bookings</h1>
-                        <h1 class="text-center text-1">130</h1>
+                        <h1 class="text-center text-1">{{bookingsCount}}</h1>
                     </div>
                     <div class="col col-sm-12 col-b mb-2">
                         <h1 class="text-center text-1">Buses</h1>
@@ -119,44 +119,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>04/03/2023</td>
-                            <td>635728916V</td>
-                            <td>XYZ</td>
-                            <td>1</td>
-                            <td>0767328394</td>
+                        <tr *ngFor="let bookings of bookingsList">
+                            <td>{{bookings.date}}</td>
+                            <td>{{bookings.nicnum}}</td>
+                            <td>{{bookings.fname}}</td>
+                            <td>{{bookings.lname}}</td>
+                            <td>{{bookings.phone}}</td>
                             <!--<td>example2023@gmail.com</td>-->
-                            <td>Colombo</td>
-                            <td>Kandy</td>
-                            <td>07</td>
-                            <td>LN-1256</td>
-                            <td>1.00 PM</td>
+                            <td>{{bookings.from}}</td>
+                            <td>{{bookings.to}}</td>
+                            <td>{{bookings.seatnum}}</td>
+                            <td>{{bookings.busnum}}</td>
+                            <td>{{bookings.time}}</td>
                             <td>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal"
                                     data-bs-target="#editBookings">Edit</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger delete-B">Cancel</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>04/03/2023</td>
-                            <td>635728916V</td>
-                            <td>example</td>
-                            <td>2</td>
-                            <td>0767893256</td>
-                            <!--<td>example22023@gmail.com</td>-->
-                            <td>Monaragala</td>
-                            <td>Colombo</td>
-                            <td>17</td>
-                            <td>LA-4256</td>
-                            <td>08:40 AM</td>
-                            <td>
-                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#editBookings">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger delete-B">Delete</a>
                             </td>
                         </tr>
                     </tbody>

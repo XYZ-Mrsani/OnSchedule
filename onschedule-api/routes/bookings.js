@@ -25,9 +25,10 @@ router.get("/list", async (req, res) => {
   try {
     const snapshot = await bookingsModel.get();
     const list = snapshot.docs.map((doc) => Bookings.fromFirestoreData(doc));
-    res.send({ status: 200, BookingsDetails: list });
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
   } catch (error) {
-    res.status(400).send({ status: 400, message: 'Unable to Add Bookings' });
+    res.status(400).send({ status: 400, message: 'Unable to list Bookings' });
   }
 });
 

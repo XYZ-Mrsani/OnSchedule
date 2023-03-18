@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookingsService } from '../../app/services/bookings.service'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,9 +9,15 @@ import Swal from 'sweetalert2';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(){}
+  BookingsDetails: any;
+  bookingsList: any;
+  bookingsCount: any;
+
+  constructor(private bookingsService: BookingsService) { }
 
   ngOnInit(): void {
+
+    this.getBookingsList();
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
@@ -122,6 +129,16 @@ export class DashboardComponent implements OnInit {
           });
         }
       });
+    });
+  }
+
+  getBookingsList() {
+    this.bookingsService.getBookings().subscribe(data => {
+      this.BookingsDetails = data;
+      this.bookingsCount = this.BookingsDetails.recordCount;
+      this.bookingsList = this.BookingsDetails.results;
+      console.log(this.bookingsList);
+      console.log(this.bookingsCount);
     });
   }
 
