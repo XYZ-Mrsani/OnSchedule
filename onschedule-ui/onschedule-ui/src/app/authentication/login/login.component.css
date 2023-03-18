@@ -8,3 +8,9 @@
     border: 1px solid green;
     box-shadow: 0 0 2px green;
 }
+
+.img-logo{
+    margin-top: -50px;
+    padding: 10px;
+    width: 400px;
+}
