@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from '../../app/services/bookings.service'
 import Swal from 'sweetalert2';
 import { BusesService } from '../services/buses.service';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,14 +17,18 @@ export class DashboardComponent implements OnInit {
   BusDetails: any;
   busList: any;
   busesCount: any;
+  TransactionDetails: any;
+  TransactionCount: any;
+  TransactionList: any;
 
 
-  constructor(private bookingsService: BookingsService, private busesService: BusesService) { }
+  constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
 
     this.getBookingsList();
     this.getBusList();
+    this.getTransactionList();
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
@@ -155,6 +160,16 @@ export class DashboardComponent implements OnInit {
       this.busList = this.BusDetails.results;
       console.log(this.busList);
       console.log(this.busesCount);
+    });
+  }
+
+  getTransactionList() {
+    this.transactionService.getTransaction().subscribe(data => {
+      this.TransactionDetails = data;
+      this.TransactionCount = this.TransactionDetails.recordCount;
+      this.TransactionList = this.TransactionDetails.results;
+      console.log(this.TransactionList);
+      console.log(this.TransactionCount);
     });
   }
 
