@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingsService } from '../../app/services/bookings.service'
 import Swal from 'sweetalert2';
+import { BusesService } from '../services/buses.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,17 @@ export class DashboardComponent implements OnInit {
   BookingsDetails: any;
   bookingsList: any;
   bookingsCount: any;
+  BusDetails: any;
+  busList: any;
+  busesCount: any;
 
-  constructor(private bookingsService: BookingsService) { }
+
+  constructor(private bookingsService: BookingsService, private busesService: BusesService) { }
 
   ngOnInit(): void {
 
     this.getBookingsList();
+    this.getBusList();
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
@@ -139,6 +145,16 @@ export class DashboardComponent implements OnInit {
       this.bookingsList = this.BookingsDetails.results;
       console.log(this.bookingsList);
       console.log(this.bookingsCount);
+    });
+  }
+
+  getBusList() {
+    this.busesService.getBuses().subscribe(data => {
+      this.BusDetails = data;
+      this.busesCount = this.BusDetails.recordCount;
+      this.busList = this.BusDetails.results;
+      console.log(this.busList);
+      console.log(this.busesCount);
     });
   }
 
