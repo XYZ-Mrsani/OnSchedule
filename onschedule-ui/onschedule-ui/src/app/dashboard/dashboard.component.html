@@ -78,7 +78,7 @@
                     </div>
                     <div class="col col-sm-12 col-b mb-2">
                         <h1 class="text-center text-1">Buses</h1>
-                        <h1 class="text-center text-1">50</h1>
+                        <h1 class="text-center text-1">{{busesCount}}</h1>
                     </div>
                     <div class="col col-sm-12 col-b mb-2">
                         <h1 class="text-center text-1">Transactions</h1>
@@ -177,32 +177,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>LN-1256</td>
-                            <td>XYZ</td>
-                            <td>xyz</td>
-                            <td>0767328394</td>
-                            <td>Colombo - Kandy</td>
-                            <td>Colombo-01:00 PM</td>
-                            <td>Kandy-05:00 PM</td>
-                            <td style="color: red; font-weight: bold">No</td>
-                            <td>
-                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#editBusDetails">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger delete-bus">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>LA-4256</td>
-                            <td>Test</td>
-                            <td>XYZ</td>
-                            <td>0789245367</td>
-                            <td>Monaragala - Colombo</td>
-                            <td>Monaragala-08:40 AM</td>
-                            <td>Colombo-05:00 PM</td>
-                            <td style="color: green; font-weight: bold">Yes</td>
+                        <tr *ngFor="let bus of busList">
+                            <td>{{bus.vnum}}</td>
+                            <td>{{bus.dname}}</td>
+                            <td>{{bus.cname}}</td>
+                            <td>{{bus.phone}}</td>
+                            <td>{{bus.route}}</td>
+                            <td>{{bus.dt}}</td>
+                            <td>{{bus.at}}</td>
+                            <td style="color: red; font-weight: bold">{{bus.availabilty}}</td>
                             <td>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal"
                                     data-bs-target="#editBusDetails">Edit</a>
