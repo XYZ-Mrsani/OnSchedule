@@ -82,7 +82,7 @@
                     </div>
                     <div class="col col-sm-12 col-b mb-2">
                         <h1 class="text-center text-1">Transactions</h1>
-                        <h1 class="text-center text-1">130</h1>
+                        <h1 class="text-center text-1">{{TransactionCount}}</h1>
                     </div>
                 </div>
 
@@ -185,7 +185,7 @@
                             <td>{{bus.route}}</td>
                             <td>{{bus.dt}}</td>
                             <td>{{bus.at}}</td>
-                            <td style="color: red; font-weight: bold">{{bus.availabilty}}</td>
+                            <td style="color: red; font-weight: bold">{{bus.availability}}</td>
                             <td>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal"
                                     data-bs-target="#editBusDetails">Edit</a>
@@ -227,33 +227,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>2023-02-14 10:30 AM</td>
-                            <td>RS. 2200</td>
-                            <td>321564789V</td>
-                            <td>Test1</td>
-                            <td>LA-4256</td>
-                            <td>Monaragala-08:40 AM</td>
-                            <td>Colombo-05:00 PM</td>
-                            <td>Colombo</td>
-                            <td>
-                                <a class="btn btn-success" href="#">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>2023-01-14 01:30 AM</td>
-                            <td>RS. 1800</td>
-                            <td>234563879V</td>
-                            <td>Test2</td>
-                            <td>LN-1256</td>
-                            <td>Colombo-01:00 PM</td>
-                            <td>Kandy-05:00 PM</td>
-                            <td>Kandy</td>
+                        <tr *ngFor="let transaction of TransactionList">
+                            <td>{{transaction.id}}</td>
+                            <td>{{transaction.datetime}}</td>
+                            <td>{{transaction.amount}}</td>
+                            <td>{{transaction.nicnum}}</td>
+                            <td>{{transaction.pname}}</td>
+                            <td>{{transaction.busnum}}</td>
+                            <td>{{transaction.dt}}</td>
+                            <td>{{transaction.at}}</td>
+                            <td>{{transaction.destination}}</td>
                             <td>
                                 <a class="btn btn-success" href="#">Edit</a>
                             </td>
