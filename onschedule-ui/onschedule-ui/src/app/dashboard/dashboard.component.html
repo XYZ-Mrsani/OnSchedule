@@ -273,35 +273,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Test_001</td>
-                            <td>2023-02-14 10:30 AM</td>
+                        <tr *ngFor="let feedbacks of FeedbackList">
+                            <td>{{feedbacks.pname}}</td>
+                            <td>{{feedbacks.datetime}}</td>
                             <td style="width: 400px">
-                                I had a great experience on the bus. The driver and
-                                conductor were really friendly and helpful. Thank you!
+                                {{feedbacks.feedback}}
                             </td>
-                            <td>LN-1256</td>
-                            <td>Colombo - Kandy</td>
+                            <td>{{feedbacks.busnum}}</td>
+                            <td>{{feedbacks.busroute}}</td>
                             <td>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal"
                                     data-bs-target="#editFeedback">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger delete-f">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Test_002</td>
-                            <td>2023-01-14 01:30 AM</td>
-                            <td>
-                                Bus arrived late at the stop by 15 minutes. It would be
-                                helpful to receive real-time updates on any delays or
-                                changes to the schedule
-                            </td>
-                            <td>LA-4256</td>
-                            <td>Monaragala - Colombo</td>
-                            <td>
-                                <a class="btn btn-success" href="#">Edit</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger delete-f">Delete</a>

@@ -3,6 +3,7 @@ import { BookingsService } from '../../app/services/bookings.service'
 import Swal from 'sweetalert2';
 import { BusesService } from '../services/buses.service';
 import { TransactionService } from '../services/transaction.service';
+import { PassengerService } from '../services/passenger.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,9 +21,11 @@ export class DashboardComponent implements OnInit {
   TransactionDetails: any;
   TransactionCount: any;
   TransactionList: any;
+  FeedbackDetails: any;
+  FeedbackList: any;
 
 
-  constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private ngZone: NgZone) { }
+  constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private passengerService: PassengerService, private ngZone: NgZone) { }
 
   ngOnInit(): void {
 
@@ -31,6 +34,7 @@ export class DashboardComponent implements OnInit {
       this.getBookingsList();
       this.getBusList();
       this.getTransactionList();
+      this.getFeedbackList();
     } else {
       window.location.href = "http://localhost:4200/login";
     }
@@ -40,6 +44,7 @@ export class DashboardComponent implements OnInit {
         this.getBookingsList();
         this.getBusList();
         this.getTransactionList();
+        this.getFeedbackList();
       });
     }, 5000);
 
@@ -183,6 +188,14 @@ export class DashboardComponent implements OnInit {
       this.TransactionList = this.TransactionDetails.results;
       console.log(this.TransactionList);
       console.log(this.TransactionCount);
+    });
+  }
+
+  getFeedbackList() {
+    this.passengerService.getFeeback().subscribe(data => {
+      this.FeedbackDetails = data;
+      this.FeedbackList = this.FeedbackDetails.results;
+      console.log(this.FeedbackList);
     });
   }
 
