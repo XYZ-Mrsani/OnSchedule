@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AdminService } from '../../../app/services/admin.service';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(){}
+  constructor(private adminService: AdminService,) { }
 
   ngOnInit(): void {
-    
+
   }
-  loginUser(event:any) {
+  dataLog: any = {};
+
+  loginUser(event: any) {
     event.preventDefault();
     const target = event.target
     const username = target.querySelector(".username").value
@@ -26,8 +29,8 @@ export class LoginComponent implements OnInit {
         confirmButtonColor: "green",
         confirmButtonText: "Ok",
       });
-  }
-  else if (password == "") {
+    }
+    else if (password == "") {
       Swal.fire({
         title: "Password Should Not Be Empty",
         icon: "warning",
@@ -35,8 +38,33 @@ export class LoginComponent implements OnInit {
         confirmButtonColor: "green",
         confirmButtonText: "Ok",
       });
-  }else{
-    window.location.href="http://localhost:4200/dashboard";
-  }
+    } else {
+      this.adminService.login(username, password).subscribe((data) => {
+        this.dataLog = data;
+
+        if (this.dataLog.success) {
+          localStorage.setItem('usertoken', username);
+          //localStorage.setItem('token', this.dataLog.token);
+          
+          window.location.href = "http://localhost:4200/dashboard";
+        } else {
+          Swal.fire({
+            title: this.dataLog.message,
+            icon: "error",
+            iconColor: "red",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+        });
+        }
+      }, err => {
+        Swal.fire({
+          title: "Login Failed",
+          icon: "error",
+          iconColor: "red",
+          confirmButtonColor: "green",
+          confirmButtonText: "Ok",
+      });
+      });
+    }
   }
 }
