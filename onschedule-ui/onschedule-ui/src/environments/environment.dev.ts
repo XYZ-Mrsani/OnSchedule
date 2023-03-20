@@ -17,5 +17,9 @@ export const environment = {
     ADMIN_BASE_URL: 'http://localhost:3000/admin/',
     ADMIN: {
         LOGIN: 'login'
+    },
+    PASSENGER_BASE_URL: 'http://localhost:3000/passenger/',
+    PASSENGER: {
+        GET_ALL_FEEDBACK: 'list'
     }
 };
