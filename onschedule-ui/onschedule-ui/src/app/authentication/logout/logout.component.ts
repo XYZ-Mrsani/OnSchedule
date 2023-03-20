@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -6,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-constructor(){}
+  constructor(private router: Router) { }
 
-ngOnInit(): void {
-  logout();
-}
-}
+  ngOnInit(): void {
+    this.logout();
+  }
 
-function logout(){
-  window.location.href="http://localhost:4200/login"; 
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
 }
