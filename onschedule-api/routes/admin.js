@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     await adminModel.where("username", "==", username).get().then((querySnapshot) => {
       if (querySnapshot.empty) {
-        res.send({ message: "Admin Not Found" });
+        res.send({ message: "Username Not Found" });
       }
       querySnapshot.forEach((doc) => {
         const admin = Admin.fromFirestoreData(doc);
