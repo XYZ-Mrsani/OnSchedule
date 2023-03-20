@@ -14,4 +14,8 @@ export const environment = {
     TRANSACTION: {
         GET_ALL_TRANSACTION: 'list'
     },
+    ADMIN_BASE_URL: 'http://localhost:3000/admin/',
+    ADMIN: {
+        LOGIN: 'login'
+    }
 };
