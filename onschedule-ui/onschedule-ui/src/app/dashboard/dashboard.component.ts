@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { BookingsService } from '../../app/services/bookings.service'
 import Swal from 'sweetalert2';
 import { BusesService } from '../services/buses.service';
@@ -22,13 +22,26 @@ export class DashboardComponent implements OnInit {
   TransactionList: any;
 
 
-  constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService) { }
+  constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private ngZone: NgZone) { }
 
   ngOnInit(): void {
 
-    this.getBookingsList();
-    this.getBusList();
-    this.getTransactionList();
+    var logingStatus = localStorage.getItem('usertoken')
+    if (logingStatus) {
+      this.getBookingsList();
+      this.getBusList();
+      this.getTransactionList();
+    } else {
+      window.location.href = "http://localhost:4200/login";
+    }
+
+    setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+      });
+    }, 5000);
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
