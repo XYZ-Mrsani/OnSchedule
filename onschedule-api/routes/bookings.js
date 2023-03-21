@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 const { Bookings, bookingsModel } = require('../models/bookings.model');
+const { CancelBookings, cancelbookingsModel } = require('../models/c_bookings.model');
 
 var date = new Date();
 let cdate = date.toISOString().slice(0, 10);
@@ -69,4 +70,46 @@ router.delete("/delete", async (req, res) => {
   }
 });
 
+/**add cancel bookings */
+
+/*router.post("/createc", async (req, res) => {
+
+  const { nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = req.body;
+
+  try {
+    const newCBookings = new CancelBookings(null, cdate, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+    const newCBookingsDocRef = await cancelbookingsModel.add(newCBookings.toFirebaseData());
+    const newCBookingsDoc = await newCBookingsDocRef.get();
+
+    res.send({ status: 200, message: 'Bookings added successfully', CBookingsDetails: newCBookingsDoc.data() });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ status: 400, message: 'Unable to Add Bookings' });
+  }
+});*/
+
+router.get("/listcancel", async (req, res) => {
+  try {
+    const snapshot = await cancelbookingsModel.get();
+    const list = snapshot.docs.map((doc) => CancelBookings.fromFirestoreData(doc));
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to list Cancel Bookings' });
+  }
+});
+
+
+router.get("/viewbookings", async (req, res) => {
+
+  const id = req.query.id;
+  try {
+    const snapshot = await bookingsModel.doc(id).get();
+    const list = snapshot.data();
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to list Bookings' });
+  }
+});
 module.exports = router;
