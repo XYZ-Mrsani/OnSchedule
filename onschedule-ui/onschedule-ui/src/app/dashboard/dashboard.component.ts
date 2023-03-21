@@ -23,6 +23,10 @@ export class DashboardComponent implements OnInit {
   TransactionList: any;
   FeedbackDetails: any;
   FeedbackList: any;
+  CBookingsDetails:any;
+  CbookingsList:any;
+  vBookingsDetails:any;
+  vBookingsList:any;
 
 
   constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private passengerService: PassengerService, private ngZone: NgZone) { }
@@ -35,6 +39,8 @@ export class DashboardComponent implements OnInit {
       this.getBusList();
       this.getTransactionList();
       this.getFeedbackList();
+      this.getCBookingsList();
+      this.viewBookings();
     } else {
       window.location.href = "http://localhost:4200/login";
     }
@@ -45,6 +51,7 @@ export class DashboardComponent implements OnInit {
         this.getBusList();
         this.getTransactionList();
         this.getFeedbackList();
+        this.getCBookingsList();
       });
     }, 5000);
 
@@ -196,6 +203,24 @@ export class DashboardComponent implements OnInit {
       this.FeedbackDetails = data;
       this.FeedbackList = this.FeedbackDetails.results;
       console.log(this.FeedbackList);
+    });
+  }
+
+  getCBookingsList() {
+    this.bookingsService.getCancelBookings().subscribe(data => {
+      this.CBookingsDetails = data;
+      this.CbookingsList = this.CBookingsDetails.results;
+      console.log(this.CbookingsList);
+    });
+  }
+
+  viewBookings(){
+    let id = 'Zl3z5Na9R9dHacNCBMXq';
+
+    this.bookingsService.viewBookings(id).subscribe(data=>{
+      this.vBookingsDetails = data;
+      this.vBookingsList = this.vBookingsDetails.results;
+      console.log(this.vBookingsList);
     });
   }
 

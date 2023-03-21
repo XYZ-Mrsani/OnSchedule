@@ -3,7 +3,10 @@ export const environment = {
     BASE_URL: 'http://localhost:3000/',
     Bookings_BASE_URL: 'http://localhost:3000/bookings/',
     BOOKINGS: {
-        GET_ALL_BOOKINGS: 'list'
+        GET_ALL_BOOKINGS: 'list',
+        GET_ALL_CANCEL_BOOKINGS: 'listcancel',
+        VIEW_BOOKINGS: 'viewbookings?id='
+
     },
     BUSES_BASE_URL: 'http://localhost:3000/bus/',
     BUSES: {
