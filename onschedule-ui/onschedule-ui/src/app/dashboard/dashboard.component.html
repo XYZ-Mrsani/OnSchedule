@@ -184,7 +184,7 @@
                             <td>{{bus.route}}</td>
                             <td>{{bus.dt}}</td>
                             <td>{{bus.at}}</td>
-                            <td style="color: red; font-weight: bold">{{bus.availability}}</td>
+                            <td class="{{bus.availability === 'Yes' ? 'green' : 'red'}}">{{bus.availability}}</td>
                             <td>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal"
                                     data-bs-target="#editBusDetails">Edit</a>
