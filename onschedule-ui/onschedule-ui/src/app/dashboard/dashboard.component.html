@@ -132,8 +132,7 @@
                             <td>{{bookings.busnum}}</td>
                             <td>{{bookings.time}}</td>
                             <td>
-                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#editBookings">Edit</a>
+                                <a class="btn btn-success" [routerLink]="['edit',bookings.id]">Edit</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger delete-B">Cancel</a>
@@ -323,29 +322,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>635728916V</td>
-                            <td>XYZ</td>
-                            <td>1</td>
-                            <td>0767328394</td>
-                            <td>example2023@gmail.com</td>
-                            <td>Colombo</td>
-                            <td>Kandy</td>
-                            <td>07</td>
-                            <td>LN-1256</td>
-                            <td>1.00 PM</td>
-                        </tr>
-                        <tr>
-                            <td>635728916V</td>
-                            <td>example</td>
-                            <td>2</td>
-                            <td>0767893256</td>
-                            <td>example22023@gmail.com</td>
-                            <td>Monaragala</td>
-                            <td>Colombo</td>
-                            <td>17</td>
-                            <td>LA-4256</td>
-                            <td>08:40 AM</td>
+                        <tr *ngFor="let cancel of CbookingsList">
+                            <td>{{cancel.date}}</td>
+                            <td>{{cancel.nicnum}}</td>
+                            <td>{{cancel.fname}}</td>
+                            <td>{{cancel.lname}}</td>
+                            <td>{{cancel.phone}}</td>
+                            <td>{{cancel.from}}</td>
+                            <td>{{cancel.to}}</td>
+                            <td>{{cancel.seatnum}}</td>
+                            <td>{{cancel.busnum}}</td>
+                            <td>{{cancel.time}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -419,7 +406,7 @@
     </div>
 </div>
 
-<!-- Edit Bookings Modal -->
+<!-- Edit Bookings Modal --
 <div class="modal fade" id="editBookings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -432,35 +419,35 @@
                 <form>
                     <div class="mb-3">
                         <label class="form-label">NIC Num</label>
-                        <input type="text" class="form-control" id="nic" />
+                        <input type="text" class="form-control" id="nic" value="{{vBookingsList.nicnum}}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="fname" />
+                        <input type="text" class="form-control" id="fname" value="{{vBookingsList.fname}}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lname" />
+                        <input type="text" class="form-control" id="lname" value="{{vBookingsList.lname}}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="phone" />
+                        <input type="text" class="form-control" id="phone" value="{{vBookingsList.phone}}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">From</label>
-                        <input type="text" class="form-control" id="from" />
+                        <input type="text" class="form-control" id="from" value="{{vBookingsList.from}}"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">To</label>
-                        <input type="text" class="form-control" id="to" />
+                        <input type="text" class="form-control" id="to" value="{{vBookingsList.to}}"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Seat Num</label>
-                        <input type="text" class="form-control" id="seatnum" />
+                        <input type="text" class="form-control" id="seatnum" value="{{vBookingsList.seatnum}}"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Time</label>
-                        <input type="text" class="form-control" id="time" />
+                        <input type="text" class="form-control" id="time" value="{{vBookingsList.time}}"/>
                     </div>
                     <div class="modal-footer" style="border-top: 0 none">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
@@ -474,7 +461,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <!-- Edit bus details Modal -->
 <div class="modal fade" id="editBusDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
