@@ -352,41 +352,45 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form (submit)="addNewBus($event)">
                     <div class="mb-3">
                         <label class="form-label">Vehicle Num</label>
-                        <input type="text" class="form-control" id="Vehicle" />
+                        <input type="text" class="form-control vnum" id="vnum" name="vnum" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Driver Name</label>
-                        <input type="text" class="form-control" id="Driver" />
+                        <input type="text" class="form-control dname" id="dname" name="dname" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Conductor Name</label>
-                        <input type="text" class="form-control" id="Conductor" />
+                        <input type="text" class="form-control cname" id="cname" name="cname" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="Phone" />
+                        <input type="text" class="form-control phone" id="phone" name="phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Route</label>
+                        <input type="text" class="form-control route" id="route" name="route" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Departure Time</label>
-                        <input type="text" class="form-control" id="Departure" />
+                        <input type="text" class="form-control dt" id="dt" name="dt" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Arrival Time</label>
-                        <input type="text" class="form-control" id="Arrival" />
+                        <input type="text" class="form-control at" id="at" name="at" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Availability</label>
                         <div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Availability" id="availabilityYes"
-                                    value="Yes" />
+                                <input class="form-check-input availability" type="radio" name="availability" id="availabilityYes"
+                                    value="Yes" checked />
                                 <label class="form-check-label" for="availabilityYes">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Availability" id="availabilityNo"
+                                <input class="form-check-input availability" type="radio" name="availability" id="availabilityNo"
                                     value="No" />
                                 <label class="form-check-label" for="availabilityNo">No</label>
                             </div>
