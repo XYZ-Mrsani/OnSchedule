@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<div class="main-container d-flex">
+    <div class="sidebar position-fixed h-100" id="side_nav">
+        <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+            <h1 class="fs-4">
+                <span class="bg-white text-success rounded shadow px-2 me-2">OS</span>
+                <span class="text-white">OnSchedule</span>
+            </h1>
+            <button class="btn d-md-none d-block close-btn px-1 py-0 text-white">
+                <i class="fal fa-stream"></i>
+            </button>
+        </div>
+        <ul class="list-unstyled px-2">
+            <li class="active">
+                <a href="http://localhost:4200/dashboard#dashboard-content"
+                    class="text-decoration-none px-3 py-2 d-block">
+                    <i class="fal fa-home"></i> Dashboard</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#bookings" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-list"></i>
+                    Bookings</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#bus-details"
+                    class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                    <span><i class="fal fa-bus"></i> Bus Schedule</span>
+                    <!--<span class="bg-white rounded-pill text-dark py-0 px-2">02</span>-->
+                </a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#transition" class="text-decoration-none px-3 py-2 d-block">
+                    <i class="fal fa-envelope-open-dollar"></i> Transactions</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#Passenger" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-users"></i>
+                    Feedback</a>
+            </li>
+            <li class="">
+                <a href="http://localhost:4200/dashboard#cancel" class="text-decoration-none px-3 py-2 d-block"><i
+                        class="fal fa-ban"></i> Booking Cancel</a>
+            </li>
+        </ul>
+        <hr class="h-color mx-2" />
+    </div>
+</div>
+<div class="content" id="dashboard-content">
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light nav-bg">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between d-md-none d-block">
+                    <button class="btn px-1 py-0 open-btn me-2">
+                        <i class="fal fa-stream"></i>
+                    </button>
+                    <a class="navbar-brand fs-4" href="#"><span
+                            class="bg-white rounded px-2 py-0 text-success">OS</span></a>
+                </div>
+                <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="divbg">
+            <div class="container rounded mt-3 mb-5">
+                <div class="row mx-auto" style="background-color: #f6f6f6; width: 80%;">
+
+                    <div class="col-md-0 border-right">
+                        <div class="p-3 py-5 mx-auto w-75">
+                            <div class="d-flex justify-content-center align-items-center mb-3">
+                                <h4 class="text-right">Edit Bookings</h4>
+                            </div>
+                            <form>
+                                <div class="row mt-2">
+                                    <div class="col-md-6"><label class="labels">Date</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.date}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">NIC Number</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.nicnum}}" readonly></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"><label class="labels">First Name</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.fname}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.lname}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Phone</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.phone}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">From</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.from}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">To</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.to}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Seat Number</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.seatnum}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Bus Number</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.busnum}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Time</label><input type="text"
+                                            class="form-control" value="{{vBookingsList.time}}" readonly></div>
+                                </div>
+                                <div class="mt-5 text-center">
+                                    <button class="btn btn-primary edit-button" style="width: 80px; margin-right: 20px;"
+                                        type="button">Edit</button>
+                                    <a href="http://localhost:4200/dashboard#dashboard-content"
+                                        class="btn btn-primary cancel-button" style="width: 80px;"
+                                        type="button">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
