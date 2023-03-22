@@ -13,4 +13,9 @@ export class BusesService {
     let url = environment.BUSES_BASE_URL+environment.BUSES.GET_ALL_BUSES;
     return this.httpClient.get(url);
   }
+
+  addBuses(vnum, dname, cname, phone, route, dt, at, availability){
+    let url = environment.BUSES_BASE_URL+environment.BUSES.ADD_BUS;
+    return this.httpClient.post(url,{vnum, dname, cname, phone, route, dt, at, availability});
+  }
 }

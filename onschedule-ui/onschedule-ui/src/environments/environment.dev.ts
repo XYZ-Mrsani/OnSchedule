@@ -10,7 +10,8 @@ export const environment = {
     },
     BUSES_BASE_URL: 'http://localhost:3000/bus/',
     BUSES: {
-        GET_ALL_BUSES: 'list'
+        GET_ALL_BUSES: 'list',
+        ADD_BUS: 'addbus'
     },
 
     TRANSACTION_BASE_URL: 'http://localhost:3000/transaction/',
