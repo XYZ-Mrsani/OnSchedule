@@ -23,10 +23,10 @@ export class DashboardComponent implements OnInit {
   TransactionList: any;
   FeedbackDetails: any;
   FeedbackList: any;
-  CBookingsDetails:any;
-  CbookingsList:any;
-  vBookingsDetails:any;
-  vBookingsList:any;
+  CBookingsDetails: any;
+  CbookingsList: any;
+  vBookingsDetails: any;
+  vBookingsList: any;
 
 
   constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private passengerService: PassengerService, private ngZone: NgZone) { }
@@ -40,7 +40,6 @@ export class DashboardComponent implements OnInit {
       this.getTransactionList();
       this.getFeedbackList();
       this.getCBookingsList();
-      this.viewBookings();
     } else {
       window.location.href = "http://localhost:4200/login";
     }
@@ -65,27 +64,6 @@ export class DashboardComponent implements OnInit {
     });
     $(".close-btn").on("click", function () {
       $(".sidebar").removeClass("active");
-    });
-
-    //** Add New Bus */
-    $(".save_bus").on("click", function () {
-      let Vehicle = $("#Vehicle").val();
-      let Driver = $("#Driver").val();
-      let Conductor = $("#Conductor").val();
-      let Phone = $("#Phone").val();
-      let Departure = $("#Departure").val();
-      let Arrival = $("#Arrival").val();
-      let Availability = $("#Availability").val();
-
-      if (Vehicle == "" && Driver == "" && Conductor == "" && Phone == "" && Departure == "" && Arrival == "") {
-        Swal.fire({
-          title: "Missing Informations",
-          icon: "warning",
-          iconColor: "#FFA500",
-          confirmButtonColor: "green",
-          confirmButtonText: "Ok",
-        });
-      }
     });
 
 
@@ -214,14 +192,90 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  viewBookings(){
-    let id = 'Zl3z5Na9R9dHacNCBMXq';
+  addNewBus(event) {
+    event.preventDefault();
+    const target = event.target
 
-    this.bookingsService.viewBookings(id).subscribe(data=>{
-      this.vBookingsDetails = data;
-      this.vBookingsList = this.vBookingsDetails.results;
-      console.log(this.vBookingsList);
-    });
+    const vnum = target.querySelector(".vnum").value
+    const dname = target.querySelector(".dname").value
+    const cname = target.querySelector(".cname").value
+    const phone = target.querySelector(".phone").value
+    const route = target.querySelector(".route").value
+    const dt = target.querySelector(".dt").value
+    const at = target.querySelector(".at").value
+    const availability = target.querySelector(".availability:checked").value
+
+    const [rdt, rat] = route.split(" - ");
+
+
+    if (vnum == "") {
+      Swal.fire({
+        title: "Vehicle Number Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else if (dname == "") {
+      Swal.fire({
+        title: "Driver Name Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else if (cname == "") {
+      Swal.fire({
+        title: "Conductor Name Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else if (phone == "") {
+      Swal.fire({
+        title: "Phone Number Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else if (route == "") {
+      Swal.fire({
+        title: "Route Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else if (dt == "") {
+      Swal.fire({
+        title: "Departure Time Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    }
+    else if (at == "") {
+      Swal.fire({
+        title: "Arrival Time Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.busesService.addBuses(vnum, dname, cname, phone, route, rdt + "- " + dt, rat + "- " + at, availability).subscribe(data => {
+        Swal.fire(
+          'New Bus Added Successfuly', '',
+          'success'
+        ).then(function () {
+          window.location.href = "http://localhost:4200/dashboard";
+        });
+        console.log(data);
+      });
+    }
   }
 
 }
