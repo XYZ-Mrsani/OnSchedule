@@ -44,4 +44,35 @@ router.get("/list", async (req, res) => {
     }
 });
 
+router.get("/viewfeedback", async (req, res) => {
+
+    const id = req.query.id;
+    try {
+      const snapshot = await passengerModel.doc(id).get();
+      const list = snapshot.data();
+      const recordCount = list.length;
+      res.send({ status: 200, recordCount: recordCount, results: list });
+    } catch (error) {
+      res.status(400).send({ status: 400, message: 'Unable to list Feedback' });
+    }
+  });
+  
+  router.put("/update", async (req, res) => {
+  
+    try {
+      const id = req.query.id;
+      const { pname, datetime, feedback, busnum, busroute } = req.body;
+  
+      const updateFeedback = new Passenger(id, pname, datetime, feedback, busnum, busroute);
+      await passengerModel.doc(id).update(updateFeedback.toFirebaseData());
+  
+      const updateFeedbackDoc = await passengerModel.doc(id).get();
+  
+      res.send({ status: 200, message: "Feedback Updated Successfully", results: updateFeedbackDoc.data() })
+    } catch (error) {
+      console.log(error);
+      res.status(400).send({ status: 400, message: 'Unable to Update Feedback' });
+    }
+  });
+
 module.exports = router;
