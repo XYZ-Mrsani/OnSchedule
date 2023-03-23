@@ -77,36 +77,53 @@
                     <div class="col-md-0 border-right">
                         <div class="p-3 py-5 mx-auto w-75">
                             <div class="d-flex justify-content-center align-items-center mb-3">
-                                <h4 class="text-right">Edit Bookings</h4>
+                                <h4 class="text-right">Edit Buses</h4>
                             </div>
-                            <form>
+                            <form (submit)="updateNewBus($event)">
                                 <div class="row mt-2">
-                                    <div class="col-md-6"><label class="labels">Date</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.date}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">NIC Number</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.nicnum}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Vehicle Number</label><input type="text"
+                                            class="form-control vnum" value="{{vBusList?.vnum}}"></div>
+                                    <div class="col-md-6"><label class="labels">Driver Name</label><input type="text"
+                                            class="form-control dname" value="{{vBusList?.dname}}"></div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-6"><label class="labels">First Name</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.fname}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.lname}}" readonly></div>
+                                    <div class="col-md-6"><label class="labels">Conductor Name</label><input type="text"
+                                            class="form-control cname" value="{{vBusList?.cname}}"></div>
                                     <div class="col-md-6"><label class="labels">Phone</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.phone}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">From</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.from}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">To</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.to}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">Seat Number</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.seatnum}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">Bus Number</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.busnum}}" readonly></div>
-                                    <div class="col-md-6"><label class="labels">Time</label><input type="text"
-                                            class="form-control" value="{{vBookingsList?.time}}" readonly></div>
+                                            class="form-control phone" value="{{vBusList?.phone}}"></div>
                                 </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-md-6"><label class="labels">Route</label><input type="text"
+                                            class="form-control route" value="{{vBusList?.route}}"></div>
+                                    <div class="col-md-6"><label class="labels">Departure Time</label><input type="text"
+                                            class="form-control dt" value="{{vBusList?.dt}}"></div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-md-6"><label class="labels">Arrival Time</label><input type="text"
+                                            class="form-control at" value="{{vBusList?.at}}"></div>
+                                    <div class="col-md-6"><label class="form-label">Availability</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input availability" type="radio"
+                                                    name="availability" id="availabilityYes" value="Yes"
+                                                    [checked]="vBusList?.availability === 'Yes'" />
+                                                <label class="form-check-label" for="availabilityYes">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input availability" type="radio"
+                                                    name="availability" id="availabilityNo" value="No"
+                                                    [checked]="vBusList?.availability === 'No'" />
+                                                <label class="form-check-label" for="availabilityNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="mt-5 text-center">
                                     <button class="btn btn-primary edit-button" style="width: 80px; margin-right: 20px;"
-                                        type="button">Edit</button>
+                                        type="submit">Edit</button>
                                     <a href="http://localhost:4200/dashboard#dashboard-content"
                                         class="btn btn-primary cancel-button" style="width: 80px;"
                                         type="button">Cancel</a>

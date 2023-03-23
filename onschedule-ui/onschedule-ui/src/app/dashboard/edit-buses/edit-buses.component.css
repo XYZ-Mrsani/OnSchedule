@@ -1,0 +1,56 @@
+.divbg{
+    margin-top: 70px;
+}
+.form-control {
+    box-shadow: none;
+    border-color: #00b050
+}
+
+.edit-button {
+    background: #00b050;
+    box-shadow: none;
+    border: none
+}
+
+.edit-button:hover {
+    background: #01863d
+}
+
+.edit-button:focus {
+    background: #00b050;
+    box-shadow: none
+}
+
+.edit-button:active {
+    background: #00b050;
+    box-shadow: none
+}
+
+.cancel-button {
+    background: rgb(214, 31, 31);
+    box-shadow: none;
+    border: none
+}
+
+.cancel-button:hover {
+    background:  rgb(172, 16, 16)
+}
+
+.cancel-button:focus {
+    background:  rgb(214, 31, 31);
+    box-shadow: none
+}
+
+.cancel-button:active {
+    background:  rgb(214, 31, 31);
+    box-shadow: none
+}
+
+.back:hover {
+    color: #00b050;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 20px
+}
