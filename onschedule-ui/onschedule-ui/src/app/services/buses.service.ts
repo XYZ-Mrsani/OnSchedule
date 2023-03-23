@@ -7,15 +7,25 @@ import { environment } from 'src/environments/environment.dev';
 })
 export class BusesService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getBuses(){
-    let url = environment.BUSES_BASE_URL+environment.BUSES.GET_ALL_BUSES;
+  getBuses() {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.GET_ALL_BUSES;
     return this.httpClient.get(url);
   }
 
-  addBuses(vnum, dname, cname, phone, route, dt, at, availability){
-    let url = environment.BUSES_BASE_URL+environment.BUSES.ADD_BUS;
-    return this.httpClient.post(url,{vnum, dname, cname, phone, route, dt, at, availability});
+  addBuses(vnum, dname, cname, phone, route, dt, at, availability) {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.ADD_BUS;
+    return this.httpClient.post(url, { vnum, dname, cname, phone, route, dt, at, availability });
+  }
+
+  viewBus(id) {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.VIEW_BUS + id;
+    return this.httpClient.get(url);
+  }
+
+  editBus(id, vnum, dname, cname, phone, route, dt, at, availability) {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.UPDATE + id;
+    return this.httpClient.put(url, { vnum, dname, cname, phone, route, dt, at, availability });
   }
 }
