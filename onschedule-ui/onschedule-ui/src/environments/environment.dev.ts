@@ -26,6 +26,8 @@ export const environment = {
     },
     PASSENGER_BASE_URL: 'http://localhost:3000/passenger/',
     PASSENGER: {
-        GET_ALL_FEEDBACK: 'list'
+        GET_ALL_FEEDBACK: 'list',
+        VIEW_FEEDBACK: 'viewfeedback?id=',
+        UPDATE: 'update?id='
     }
 };
