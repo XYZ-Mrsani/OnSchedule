@@ -280,8 +280,7 @@
                             <td>{{feedbacks.busnum}}</td>
                             <td>{{feedbacks.busroute}}</td>
                             <td>
-                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#editFeedback">Edit</a>
+                                <a class="btn btn-success" [routerLink]="['editfeedback',feedbacks.id]">Edit</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger delete-f">Delete</a>

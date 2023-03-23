@@ -5,13 +5,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { EditBookingsComponent } from './edit-bookings/edit-bookings.component';
 import { EditBusesComponent } from './edit-buses/edit-buses.component';
+import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     EditBookingsComponent,
-    EditBusesComponent
+    EditBusesComponent,
+    EditPassengerComponent
   ],
   imports: [
     CommonModule,
