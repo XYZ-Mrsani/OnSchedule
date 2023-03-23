@@ -186,8 +186,7 @@
                             <td>{{bus.at}}</td>
                             <td class="{{bus.availability === 'Yes' ? 'green' : 'red'}}">{{bus.availability}}</td>
                             <td>
-                                <a class="btn btn-success" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#editBusDetails">Edit</a>
+                                <a class="btn btn-success" [routerLink]="['editbus',bus.id]">Edit</a>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger delete-bus">Delete</a>
