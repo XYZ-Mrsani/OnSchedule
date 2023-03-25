@@ -60,4 +60,15 @@ router.put("/update", async (req, res) => {
   }
 });
 
+router.delete("/delete", async (req, res) => {
+
+  try {
+    const id = req.query.id;
+    await busModel.doc(id).delete();
+    res.send({ status: 200, message: "Bus Deleted Successfully" });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to Delete Bus' });
+  }
+});
+
 module.exports = router;
