@@ -28,4 +28,9 @@ export class BusesService {
     let url = environment.BUSES_BASE_URL + environment.BUSES.UPDATE + id;
     return this.httpClient.put(url, { vnum, dname, cname, phone, route, dt, at, availability });
   }
+
+  deleteBus(id){
+    let url = environment.BUSES_BASE_URL + environment.BUSES.DELETE + id;
+    return this.httpClient.delete(url);
+  }
 }

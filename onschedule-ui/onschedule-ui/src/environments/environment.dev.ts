@@ -13,7 +13,8 @@ export const environment = {
         GET_ALL_BUSES: 'list',
         ADD_BUS: 'addbus',
         VIEW_BUS: 'viewbus?id=',
-        UPDATE: 'update?id='
+        UPDATE: 'update?id=',
+        DELETE: 'delete?id='
     },
 
     TRANSACTION_BASE_URL: 'http://localhost:3000/transaction/',
