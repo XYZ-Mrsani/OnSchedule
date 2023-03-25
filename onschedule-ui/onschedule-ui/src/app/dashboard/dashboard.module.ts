@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { EditBookingsComponent } from './edit-bookings/edit-bookings.component';
 import { EditBusesComponent } from './edit-buses/edit-buses.component';
 import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
+import { DeleteBusComponent } from './delete-bus/delete-bus.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { EditPassengerComponent } from './edit-passenger/edit-passenger.componen
     DashboardComponent,
     EditBookingsComponent,
     EditBusesComponent,
-    EditPassengerComponent
+    EditPassengerComponent,
+    DeleteBusComponent
   ],
   imports: [
     CommonModule,
