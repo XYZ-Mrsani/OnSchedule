@@ -7,6 +7,7 @@ import { EditBookingsComponent } from './edit-bookings/edit-bookings.component';
 import { EditBusesComponent } from './edit-buses/edit-buses.component';
 import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
 import { DeleteBusComponent } from './delete-bus/delete-bus.component';
+import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DeleteBusComponent } from './delete-bus/delete-bus.component';
     EditBookingsComponent,
     EditBusesComponent,
     EditPassengerComponent,
-    DeleteBusComponent
+    DeleteBusComponent,
+    DeleteFeedbackComponent
   ],
   imports: [
     CommonModule,

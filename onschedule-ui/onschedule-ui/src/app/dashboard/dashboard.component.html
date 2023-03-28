@@ -103,7 +103,7 @@
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Date</th>
+                            <th scope="col">Date and Time</th>
                             <th scope="col">NIC Num</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
@@ -120,7 +120,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let bookings of bookingsList">
-                            <td>{{bookings.date}}</td>
+                            <td>{{bookings.datetime}}</td>
                             <td>{{bookings.nicnum}}</td>
                             <td>{{bookings.fname}}</td>
                             <td>{{bookings.lname}}</td>
@@ -283,7 +283,7 @@
                                 <a class="btn btn-success" [routerLink]="['editfeedback',feedbacks.id]">Edit</a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger delete-f">Delete</a>
+                                <a class="btn btn-danger delete-f" [routerLink]="['deletefeedback',feedbacks.id]">Delete</a>
                             </td>
                         </tr>
                     </tbody>
