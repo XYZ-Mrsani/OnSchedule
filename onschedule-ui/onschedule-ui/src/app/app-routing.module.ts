@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeleteBookingsComponent } from './dashboard/delete-bookings/delete-bookings.component';
 import { DeleteBusComponent } from './dashboard/delete-bus/delete-bus.component';
 import { DeleteFeedbackComponent } from './dashboard/delete-feedback/delete-feedback.component';
 import { EditBookingsComponent } from './dashboard/edit-bookings/edit-bookings.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'dashboard/deletebus/:id', component: DeleteBusComponent },
   { path: 'dashboard/editfeedback/:id', component: EditPassengerComponent },
   { path: 'dashboard/deletefeedback/:id', component: DeleteFeedbackComponent },
+  { path: 'dashboard/delete/:id', component: DeleteBookingsComponent },
   
 
   
