@@ -29,6 +29,7 @@ export const environment = {
     PASSENGER: {
         GET_ALL_FEEDBACK: 'list',
         VIEW_FEEDBACK: 'viewfeedback?id=',
-        UPDATE: 'update?id='
+        UPDATE: 'update?id=',
+        DELETE: 'delete?id='
     }
 };

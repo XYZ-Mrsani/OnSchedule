@@ -23,4 +23,9 @@ export class PassengerService {
     let url = environment.PASSENGER_BASE_URL + environment.PASSENGER.UPDATE + id;
     return this.httpClient.put(url, { pname, datetime, feedback, busnum, busroute });
   }
+
+  deletefeedback(id){
+    let url = environment.PASSENGER_BASE_URL + environment.PASSENGER.DELETE + id;
+    return this.httpClient.delete(url);
+  }
 }
