@@ -3,15 +3,30 @@ var router = express.Router();
 const { Bookings, bookingsModel } = require('../models/bookings.model');
 const { CancelBookings, cancelbookingsModel } = require('../models/c_bookings.model');
 
-var date = new Date();
-let cdate = date.toISOString().slice(0, 10);
+//var date = new Date();
+//let cdate = date.toISOString().slice(0, 10);
+
+const now = new Date();
+
+// Get year, month, and day
+const year = now.getFullYear();
+const month = String(now.getMonth() + 1).padStart(2, '0');
+const day = String(now.getDate()).padStart(2, '0');
+
+// Get hours, minutes, and seconds
+const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const meridian = now.getHours() >= 12 ? 'PM' : 'AM';
+
+// Concatenate date and time in the desired format
+const datetime = `${year}-${month}-${day} ${hours}:${minutes} ${meridian}`;
 
 router.post("/create", async (req, res) => {
 
   const { nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = req.body;
 
   try {
-    const newBookings = new Bookings(null, cdate, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+    const newBookings = new Bookings(null, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
     const newBookingsDocRef = await bookingsModel.add(newBookings.toFirebaseData());
     const newBookingsDoc = await newBookingsDocRef.get();
 
@@ -112,4 +127,21 @@ router.get("/viewbookings", async (req, res) => {
     res.status(400).send({ status: 400, message: 'Unable to list Bookings' });
   }
 });
+
+router.delete("/deletebookings", async (req, res) => {
+
+  try {
+
+    //res.send({ date: datetime });
+    const snapshot = await bookingsModel.where('datetime', '<=', datetime).get(); // Get bookings that have already passed
+    const deletePromises = snapshot.docs.map(doc => doc.ref.delete()); // Create an array of promises to delete each booking
+    await Promise.all(deletePromises); // Delete all bookings asynchronously
+    res.send({ status: 200, message: 'Bookings deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ status: 500, message: 'Unable to delete bookings' });
+  }
+
+});
+
 module.exports = router;
