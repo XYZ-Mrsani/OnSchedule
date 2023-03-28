@@ -15,9 +15,9 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 class Bookings {
-    constructor(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time) {
+    constructor(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time) {
         this.id = id;
-        this.date = date;
+        this.datetime = datetime;
         this.nicnum = nicnum;
         this.fname = fname;
         this.lname = lname;
@@ -33,13 +33,13 @@ class Bookings {
     static fromFirestoreData(doc) {
         const data = doc.data();
         const id = doc.id;
-        const { date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = data;
-        return new Bookings(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+        const { datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = data;
+        return new Bookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
     }
 
     toFirebaseData() {
         return {
-            date: this.date,
+            datetime: this.datetime,
             nicnum: this.nicnum,
             fname: this.fname,
             lname: this.lname,
