@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
       this.getTransactionList();
       this.getFeedbackList();
       this.getCBookingsList();
+      this.deleteBooking();
     } else {
       window.location.href = "http://localhost:4200/login";
     }
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
         this.getTransactionList();
         this.getFeedbackList();
         this.getCBookingsList();
+        this.deleteBooking();
       });
     }, 5000);
 
@@ -143,6 +145,12 @@ export class DashboardComponent implements OnInit {
           });
         }
       });
+    });
+  }
+
+  deleteBooking() {
+    this.bookingsService.deleteBookings().subscribe(data => {
+      console.log(data);
     });
   }
 
