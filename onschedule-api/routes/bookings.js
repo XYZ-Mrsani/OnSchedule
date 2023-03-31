@@ -23,10 +23,10 @@ const datetime = `${year}-${month}-${day} ${hours}:${minutes} ${meridian}`;
 
 router.post("/create", async (req, res) => {
 
-  const { nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = req.body;
+  const { nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = req.body;
 
   try {
-    const newBookings = new Bookings(null, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+    const newBookings = new Bookings(null, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time);
     const newBookingsDocRef = await bookingsModel.add(newBookings.toFirebaseData());
     const newBookingsDoc = await newBookingsDocRef.get();
 
@@ -133,7 +133,7 @@ router.delete("/deletebookings", async (req, res) => {
   try {
 
     //res.send({ date: datetime });
-    const snapshot = await bookingsModel.where('datetime', '<=', datetime).get(); // Get bookings that have already passed
+    const snapshot = await bookingsModel.where('time', '==', datetime).get(); // Get bookings that have already passed
     const deletePromises = snapshot.docs.map(doc => doc.ref.delete()); // Create an array of promises to delete each booking
     await Promise.all(deletePromises); // Delete all bookings asynchronously
     res.send({ status: 200, message: 'Bookings deleted successfully' });
