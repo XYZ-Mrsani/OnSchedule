@@ -8,6 +8,8 @@ import { EditBusesComponent } from './edit-buses/edit-buses.component';
 import { EditPassengerComponent } from './edit-passenger/edit-passenger.component';
 import { DeleteBusComponent } from './delete-bus/delete-bus.component';
 import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.component';
+import { DeleteBookingsComponent } from './delete-bookings/delete-bookings.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.compo
     EditBusesComponent,
     EditPassengerComponent,
     DeleteBusComponent,
-    DeleteFeedbackComponent
+    DeleteFeedbackComponent,
+    DeleteBookingsComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    TooltipModule,
   ]
 })
 export class DashboardModule { }

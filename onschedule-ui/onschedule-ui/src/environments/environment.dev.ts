@@ -5,7 +5,9 @@ export const environment = {
     BOOKINGS: {
         GET_ALL_BOOKINGS: 'list',
         GET_ALL_CANCEL_BOOKINGS: 'listcancel',
-        VIEW_BOOKINGS: 'viewbookings?id='
+        VIEW_BOOKINGS: 'viewbookings?id=',
+        DELETE: 'delete?id=',
+        DELETE_BOOKINGS:'deletebookings'
 
     },
     BUSES_BASE_URL: 'http://localhost:3000/bus/',
