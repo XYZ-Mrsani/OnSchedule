@@ -23,4 +23,13 @@ export class BookingsService {
     let url = environment.Bookings_BASE_URL+environment.BOOKINGS.VIEW_BOOKINGS+id;
     return this.httpClient.get(url);
   }
+  dBookings(id){
+    let url = environment.Bookings_BASE_URL + environment.BOOKINGS.DELETE + id;
+    return this.httpClient.delete(url);
+  }
+
+  deleteBookings(){
+    let url = environment.Bookings_BASE_URL+environment.BOOKINGS.DELETE_BOOKINGS;
+    return this.httpClient.delete(url);
+  }
 }
