@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 class Bookings {
-    constructor(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time) {
+    constructor(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time) {
         this.id = id;
         this.datetime = datetime;
         this.nicnum = nicnum;
@@ -24,8 +24,9 @@ class Bookings {
         this.phone = phone;
         this.from = from;
         this.to = to;
-        this.seatnum = seatnum;
+        this.seatnum = Array.isArray(seatnum) ? seatnum.join(',') : seatnum;;
         this.busnum = busnum;
+        this.amount = amount;
         this.time = time;
 
     }
@@ -33,8 +34,8 @@ class Bookings {
     static fromFirestoreData(doc) {
         const data = doc.data();
         const id = doc.id;
-        const { datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = data;
-        return new Bookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+        const { datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = data;
+        return new Bookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time);
     }
 
     toFirebaseData() {
@@ -48,6 +49,7 @@ class Bookings {
             to: this.to,
             seatnum: this.seatnum,
             busnum: this.busnum,
+            amount: this.amount,
             time: this.time
         };
     }
