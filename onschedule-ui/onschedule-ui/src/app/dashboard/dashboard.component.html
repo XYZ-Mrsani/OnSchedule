@@ -105,14 +105,13 @@
                         <tr>
                             <th scope="col">Date and Time</th>
                             <th scope="col">NIC Num</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Phone</th>
                             <!--<th scope="col">Email</th>-->
-                            <th scope="col">From</th>
-                            <th scope="col">To</th>
+                            <th scope="col">Route</th>
                             <th scope="col">Seat Num</th>
                             <th scope="col">Bus Num</th>
+                            <th scope="col">Amount</th>
                             <th scope="col">Time</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Cancel</th>
@@ -122,20 +121,19 @@
                         <tr *ngFor="let bookings of bookingsList">
                             <td>{{bookings.datetime}}</td>
                             <td>{{bookings.nicnum}}</td>
-                            <td>{{bookings.fname}}</td>
-                            <td>{{bookings.lname}}</td>
+                            <td>{{bookings.fname}} {{bookings.lname}}</td>
                             <td>{{bookings.phone}}</td>
                             <!--<td>example2023@gmail.com</td>-->
-                            <td>{{bookings.from}}</td>
-                            <td>{{bookings.to}}</td>
+                            <td>{{bookings.from}} - {{bookings.to}}</td>
                             <td>{{bookings.seatnum}}</td>
                             <td>{{bookings.busnum}}</td>
+                            <td>{{bookings.amount}}</td>
                             <td>{{bookings.time}}</td>
                             <td>
                                 <a class="btn btn-success" [routerLink]="['edit',bookings.id]">Edit</a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger delete-B">Cancel</a>
+                                <a class="btn btn-danger delete-B" [routerLink]="['delete',bookings.id]">Cancel</a>
                             </td>
                         </tr>
                     </tbody>
@@ -283,7 +281,8 @@
                                 <a class="btn btn-success" [routerLink]="['editfeedback',feedbacks.id]">Edit</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger delete-f" [routerLink]="['deletefeedback',feedbacks.id]">Delete</a>
+                                <a class="btn btn-danger delete-f"
+                                    [routerLink]="['deletefeedback',feedbacks.id]">Delete</a>
                             </td>
                         </tr>
                     </tbody>
@@ -307,15 +306,14 @@
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">Date and Time</th>
                             <th scope="col">NIC Num</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">From</th>
-                            <th scope="col">To</th>
+                            <th scope="col">Route</th>
                             <th scope="col">Seat Num</th>
                             <th scope="col">Bus Num</th>
+                            <th scope="col">Amount</th>
                             <th scope="col">Time</th>
                         </tr>
                     </thead>
@@ -323,13 +321,12 @@
                         <tr *ngFor="let cancel of CbookingsList">
                             <td>{{cancel.date}}</td>
                             <td>{{cancel.nicnum}}</td>
-                            <td>{{cancel.fname}}</td>
-                            <td>{{cancel.lname}}</td>
+                            <td>{{cancel.fname}} {{cancel.lname}}</td>
                             <td>{{cancel.phone}}</td>
-                            <td>{{cancel.from}}</td>
-                            <td>{{cancel.to}}</td>
+                            <td>{{cancel.from}} - {{cancel.to}}</td>
                             <td>{{cancel.seatnum}}</td>
                             <td>{{cancel.busnum}}</td>
+                            <td>{{cancel.amount}}</td>
                             <td>{{cancel.time}}</td>
                         </tr>
                     </tbody>
