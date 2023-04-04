@@ -190,7 +190,9 @@
 }
 
 .row-final {
-    margin-left: -20px;
+    align-items: center;
+    display: flex;
+    
 }
 
 .icon {
@@ -205,3 +207,22 @@
     background: #00b050;
     border: none;
 }
+.lastrow1{
+   margin-left: 10px;
+}
+.lastrow2{
+    margin-left: -15px;
+ }
+ .lastrow3{
+    margin-left: -15px;
+ }
+ .lastrow4{
+    margin-left: -15px;
+    margin-right: -15px;
+ }
+ .lastrow5{
+    margin-left: -15px;
+ }
+ .lastrow6{
+    margin-left: -15px;
+ }
