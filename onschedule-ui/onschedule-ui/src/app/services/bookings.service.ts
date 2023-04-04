@@ -32,4 +32,9 @@ export class BookingsService {
     let url = environment.Bookings_BASE_URL+environment.BOOKINGS.DELETE_BOOKINGS;
     return this.httpClient.delete(url);
   }
+
+  editBookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time){
+    let url = environment.Bookings_BASE_URL+environment.BOOKINGS.UPDATE+id;
+    return this.httpClient.put(url, {datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time})
+  }
 }
