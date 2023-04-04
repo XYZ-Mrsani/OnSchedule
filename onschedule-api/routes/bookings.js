@@ -57,9 +57,10 @@ router.put("/update", async (req, res) => {
   res.send({ msg: "User Updated" });*/
   try {
     const id = req.query.id;
-    const seatnum = req.body;
+    //const seatnum = req.body;
+    const { datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = req.body;
 
-    const updateBookings = new Bookings(id, seatnum);
+    const updateBookings = new Bookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time);
     await bookingsModel.doc(id).update(updateBookings.toFirebaseData());
 
     const updateBookingsDoc = await bookingsModel.doc(id).get();
