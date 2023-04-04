@@ -196,3 +196,12 @@
 .icon {
     margin-left: 120px;
 }
+
+.update{
+    background: #01863d;
+    border: none;
+}
+.update:hover{
+    background: #00b050;
+    border: none;
+}
