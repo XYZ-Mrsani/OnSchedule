@@ -79,8 +79,12 @@ router.delete("/delete", async (req, res) => {
   res.send({ msg: "User Deleted" });*/
   try {
     const id = req.query.id;
+    const cancelBooking = await bookingsModel.doc(id).get();
+    const cancelBookingData = cancelBooking.data();
     await bookingsModel.doc(id).delete();
+    await cancelbookingsModel.doc().set(cancelBookingData);
     res.send({ status: 200, message: "Booking Deleted Successfully" });
+    //res.redirect('/bookings/createc');
   } catch (error) {
     res.status(400).send({ status: 400, message: 'Unable to Delete Booking' });
   }
@@ -90,10 +94,10 @@ router.delete("/delete", async (req, res) => {
 
 /*router.post("/createc", async (req, res) => {
 
-  const { nicnum, fname, lname, phone, from, to, seatnum, busnum, time } = req.body;
+  const { nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = req.body;
 
   try {
-    const newCBookings = new CancelBookings(null, cdate, nicnum, fname, lname, phone, from, to, seatnum, busnum, time);
+    const newCBookings = new CancelBookings(null, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum,amount,time);
     const newCBookingsDocRef = await cancelbookingsModel.add(newCBookings.toFirebaseData());
     const newCBookingsDoc = await newCBookingsDocRef.get();
 
