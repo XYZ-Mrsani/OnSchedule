@@ -212,6 +212,7 @@ export class DashboardComponent implements OnInit {
     const dt = target.querySelector(".dt").value
     const at = target.querySelector(".at").value
     const availability = target.querySelector(".availability:checked").value
+    const price = target.querySelector(".price").value
 
     const [rdt, rat] = route.split(" - ");
 
@@ -273,8 +274,16 @@ export class DashboardComponent implements OnInit {
         confirmButtonColor: "green",
         confirmButtonText: "Ok",
       });
+    } else if (price == "") {
+      Swal.fire({
+        title: "Ticket Price Should Not Be Empty",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
     } else {
-      this.busesService.addBuses(vnum, dname, cname, phone, route, rdt + "- " + dt, rat + "- " + at, availability).subscribe(data => {
+      this.busesService.addBuses(vnum, dname, cname, phone, route, rdt + "- " + dt, rat + "- " + at, availability, price).subscribe(data => {
         Swal.fire(
           'New Bus Added Successfuly', '',
           'success'
