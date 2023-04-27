@@ -169,6 +169,7 @@
                             <th scope="col">Departure Time</th>
                             <th scope="col">Arrival Time</th>
                             <th scope="col">Availability</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -183,6 +184,7 @@
                             <td>{{bus.dt}}</td>
                             <td>{{bus.at}}</td>
                             <td class="{{bus.availability === 'Yes' ? 'green' : 'red'}}">{{bus.availability}}</td>
+                            <td>RS {{bus.price}}.00</td>
                             <td>
                                 <a class="btn btn-success" [routerLink]="['editbus',bus.id]">Edit</a>
                             </td>
@@ -319,7 +321,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let cancel of CbookingsList">
-                            <td>{{cancel.date}}</td>
+                            <td>{{cancel.datetime}}</td>
                             <td>{{cancel.nicnum}}</td>
                             <td>{{cancel.fname}} {{cancel.lname}}</td>
                             <td>{{cancel.phone}}</td>
@@ -390,6 +392,10 @@
                                 <label class="form-check-label" for="availabilityNo">No</label>
                             </div>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ticket Price</label>
+                        <input type="text" class="form-control price" id="price" name="at" />
                     </div>
                     <div class="modal-footer" style="border-top: 0 none">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
