@@ -14,9 +14,9 @@ export class BusesService {
     return this.httpClient.get(url);
   }
 
-  addBuses(vnum, dname, cname, phone, route, dt, at, availability) {
+  addBuses(vnum, dname, cname, phone, route, dt, at, availability, price) {
     let url = environment.BUSES_BASE_URL + environment.BUSES.ADD_BUS;
-    return this.httpClient.post(url, { vnum, dname, cname, phone, route, dt, at, availability });
+    return this.httpClient.post(url, { vnum, dname, cname, phone, route, dt, at, availability, price });
   }
 
   viewBus(id) {
@@ -24,12 +24,12 @@ export class BusesService {
     return this.httpClient.get(url);
   }
 
-  editBus(id, vnum, dname, cname, phone, route, dt, at, availability) {
+  editBus(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus) {
     let url = environment.BUSES_BASE_URL + environment.BUSES.UPDATE + id;
-    return this.httpClient.put(url, { vnum, dname, cname, phone, route, dt, at, availability });
+    return this.httpClient.put(url, { vnum, dname, cname, phone, route, dt, at, availability, price, sstatus });
   }
 
-  deleteBus(id){
+  deleteBus(id) {
     let url = environment.BUSES_BASE_URL + environment.BUSES.DELETE + id;
     return this.httpClient.delete(url);
   }

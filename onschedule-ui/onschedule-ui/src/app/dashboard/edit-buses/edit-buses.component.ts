@@ -40,6 +40,8 @@ export class EditBusesComponent implements OnInit {
     const dt = target.querySelector(".dt").value
     const at = target.querySelector(".at").value
     const availability = target.querySelector(".availability:checked").value
+    const price = target.querySelector(".price").value
+    const sstatus = target.querySelector(".sstatus").value
 
     let id = window.location.pathname.split("/").pop();
 
@@ -104,7 +106,7 @@ export class EditBusesComponent implements OnInit {
         confirmButtonText: "Ok",
       });
     } else {
-      this.busService.editBus(id, vnum, dname, cname, phone, route, dt, at, availability).subscribe(data => {
+      this.busService.editBus(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus).subscribe(data => {
         Swal.fire({
           title: "Bus Updated Successfully",
           icon: "success",
