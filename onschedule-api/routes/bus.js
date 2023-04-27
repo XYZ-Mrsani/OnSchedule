@@ -4,10 +4,10 @@ const { Bus, busModel } = require('../models/bus.model');
 
 router.post("/addbus", async (req, res) => {
 
-  const { vnum, dname, cname, phone, route, dt, at, availability } = req.body;
-
+  const { vnum, dname, cname, phone, route, dt, at, availability, price } = req.body;
+  const sstatus = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   try {
-    const newBus = new Bus(null, vnum, dname, cname, phone, route, dt, at, availability);
+    const newBus = new Bus(null, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus);
     const newBusDocRef = await busModel.add(newBus.toFirebaseData());
     const newBusDoc = await newBusDocRef.get();
 
@@ -46,9 +46,12 @@ router.put("/update", async (req, res) => {
 
   try {
     const id = req.query.id;
-    const { vnum, dname, cname, phone, route, dt, at, availability } = req.body;
+    const sstatusText = req.body.sstatus;
+    const sstatus = sstatusText.split(',').map(s => parseInt(s));
 
-    const updateBus = new Bus(id, vnum, dname, cname, phone, route, dt, at, availability);
+    const { vnum, dname, cname, phone, route, dt, at, availability, price } = req.body;
+
+    const updateBus = new Bus(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus);
     await busModel.doc(id).update(updateBus.toFirebaseData());
 
     const updateBusDoc = await busModel.doc(id).get();
@@ -59,7 +62,7 @@ router.put("/update", async (req, res) => {
     res.status(400).send({ status: 400, message: 'Unable to Update Bus' });
   }
 });
-
+ 
 router.delete("/delete", async (req, res) => {
 
   try {
