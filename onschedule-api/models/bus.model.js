@@ -3,7 +3,7 @@ const firebase = require("firebase");
 const db = firebase.firestore();
 
 class Bus {
-    constructor(id, vnum, dname, cname, phone, route, dt, at, availability) {
+    constructor(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus) {
         this.id = id;
         this.vnum = vnum;
         this.dname = dname;
@@ -13,14 +13,16 @@ class Bus {
         this.dt = dt;
         this.at = at;
         this.availability = availability;
+        this.price = price;
+        this.sstatus = sstatus || [];
 
     }
 
     static fromFirestoreData(doc) {
         const data = doc.data();
         const id = doc.id;
-        const { vnum, dname, cname, phone, route, dt, at, availability } = data;
-        return new Bus(id, vnum, dname, cname, phone, route, dt, at, availability);
+        const { vnum, dname, cname, phone, route, dt, at, availability, price, sstatus } = data;
+        return new Bus(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus);
     }
 
     toFirebaseData() {
@@ -32,7 +34,9 @@ class Bus {
             route: this.route,
             dt: this.dt,
             at: this.at,
-            availability: this.availability
+            availability: this.availability,
+            price: this.price,
+            sstatus: this.sstatus
         };
     }
 }
