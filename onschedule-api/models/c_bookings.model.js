@@ -3,9 +3,9 @@ const firebase = require("firebase");
 const db = firebase.firestore();
 
 class CancelBookings {
-    constructor(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time) {
+    constructor(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time) {
         this.id = id;
-        this.date = date;
+        this.datetime = datetime;
         this.nicnum = nicnum;
         this.fname = fname;
         this.lname = lname;
@@ -22,13 +22,13 @@ class CancelBookings {
     static fromFirestoreData(doc) {
         const data = doc.data();
         const id = doc.id;
-        const { date, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = data;
-        return new CancelBookings(id, date, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time);
+        const { datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time } = data;
+        return new CancelBookings(id, datetime, nicnum, fname, lname, phone, from, to, seatnum, busnum, amount, time);
     }
 
     toFirebaseData() {
         return {
-            date: this.date,
+            datetime: this.datetime,
             nicnum: this.nicnum,
             fname: this.fname,
             lname: this.lname,
