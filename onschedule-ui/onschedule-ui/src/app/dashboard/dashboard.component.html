@@ -220,27 +220,19 @@
                             <th scope="col">Departure Time</th>
                             <th scope="col">Arrival Time</th>
                             <th scope="col">Destination</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let transaction of TransactionList">
                             <td>{{transaction.id}}</td>
                             <td>{{transaction.datetime}}</td>
-                            <td>{{transaction.amount}}</td>
+                            <td>RS {{transaction.amount}}</td>
                             <td>{{transaction.nicnum}}</td>
                             <td>{{transaction.pname}}</td>
                             <td>{{transaction.busnum}}</td>
                             <td>{{transaction.dt}}</td>
                             <td>{{transaction.at}}</td>
                             <td>{{transaction.destination}}</td>
-                            <td>
-                                <a class="btn btn-success" href="#">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger">Delete</a>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
