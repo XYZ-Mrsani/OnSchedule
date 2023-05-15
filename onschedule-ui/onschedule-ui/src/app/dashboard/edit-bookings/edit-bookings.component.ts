@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BookingsService } from '../../services/bookings.service';
 import Swal from 'sweetalert2';
+import { BusesService } from 'src/app/services/buses.service';
 
 @Component({
   selector: 'app-edit-bookings',
@@ -11,8 +12,10 @@ export class EditBookingsComponent implements OnInit, AfterViewInit {
 
   vBookingsDetails: any;
   vBookingsList: any;
+  vBusDetails: any;
+  vBusList: any;
 
-  constructor(private bookingService: BookingsService) { }
+  constructor(private bookingService: BookingsService, private busService: BusesService) { }
 
   ngOnInit(): void {
     this.viewBookings();
@@ -56,6 +59,17 @@ export class EditBookingsComponent implements OnInit, AfterViewInit {
       this.vBookingsDetails = data;
       this.vBookingsList = this.vBookingsDetails.results;
       console.log(this.vBookingsList);
+
+      this.vBus();
+    });
+  }
+
+  vBus() {
+    const busnumber = this.vBookingsList.busnum;
+    this.busService.vbus(busnumber).subscribe(data => {
+      this.vBusDetails = data;
+      this.vBusList = this.vBusDetails.results[0];
+      console.log(this.vBusList);
     });
   }
 
@@ -130,7 +144,7 @@ export class EditBookingsComponent implements OnInit, AfterViewInit {
             confirmButtonColor: "green",
             confirmButtonText: "Ok",
           }).then(function () {
-            window.location.href = "http://localhost:4200/dashboard/edit/"+id;
+            window.location.href = "http://localhost:4200/dashboard/edit/" + id;
           });
           console.log(data);
         });
