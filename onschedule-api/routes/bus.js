@@ -42,6 +42,19 @@ router.get("/viewbus", async (req, res) => {
   }
 });
 
+router.get("/vbus", async (req, res) => {
+
+  const busnum = req.query.busnum;
+  try {
+    const snapshot = await busModel.where("vnum", "==", busnum).get();
+    const list = snapshot.docs.map((doc) => doc.data());
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to list Bus' });
+  }
+});
+
 router.put("/update", async (req, res) => {
 
   try {
@@ -62,7 +75,7 @@ router.put("/update", async (req, res) => {
     res.status(400).send({ status: 400, message: 'Unable to Update Bus' });
   }
 });
- 
+
 router.delete("/delete", async (req, res) => {
 
   try {
