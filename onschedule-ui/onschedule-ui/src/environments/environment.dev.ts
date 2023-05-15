@@ -7,7 +7,7 @@ export const environment = {
         GET_ALL_CANCEL_BOOKINGS: 'listcancel',
         VIEW_BOOKINGS: 'viewbookings?id=',
         DELETE: 'delete?id=',
-        DELETE_BOOKINGS:'deletebookings',
+        DELETE_BOOKINGS: 'deletebookings',
         UPDATE: 'update?id='
 
     },
@@ -17,7 +17,8 @@ export const environment = {
         ADD_BUS: 'addbus',
         VIEW_BUS: 'viewbus?id=',
         UPDATE: 'update?id=',
-        DELETE: 'delete?id='
+        DELETE: 'delete?id=',
+        VBUS: 'vbus?busnum='
     },
 
     TRANSACTION_BASE_URL: 'http://localhost:3000/transaction/',

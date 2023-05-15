@@ -33,4 +33,9 @@ export class BusesService {
     let url = environment.BUSES_BASE_URL + environment.BUSES.DELETE + id;
     return this.httpClient.delete(url);
   }
+
+  vbus(busnum) {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.VBUS + busnum;
+    return this.httpClient.get(url);
+  }
 }
