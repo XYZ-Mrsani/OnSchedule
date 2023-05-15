@@ -283,11 +283,14 @@ export class DashboardComponent implements OnInit {
         confirmButtonText: "Ok",
       });
     } else {
-      this.busesService.addBuses(vnum, dname, cname, phone, route, rdt + "- " + dt, rat + "- " + at, availability, price).subscribe(data => {
-        Swal.fire(
-          'New Bus Added Successfuly', '',
-          'success'
-        ).then(function () {
+      this.busesService.addBuses(vnum, dname, cname, phone, route, rdt + " - " + dt, rat + " - " + at, availability, price).subscribe(data => {
+        Swal.fire({
+          title: "Bus Successfuly Adedd",
+          icon: "success",
+          iconColor: "green",
+          confirmButtonColor: "green",
+          confirmButtonText: "Ok",
+        }).then(function () {
           window.location.href = "http://localhost:4200/dashboard";
         });
         console.log(data);
