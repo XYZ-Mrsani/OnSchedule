@@ -57,6 +57,19 @@ router.get("/viewfeedback", async (req, res) => {
   }
 });
 
+router.get("/vfeedback", async (req, res) => {
+  const busnum = req.query.busnum;
+
+  try {
+    const snapshot = await passengerModel.where("busnum", "==", busnum).get();
+    const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.send(400).send({ status: 400, message: 'Unable to list Transaction' })
+  }
+});
+
 router.put("/update", async (req, res) => {
 
   try {
