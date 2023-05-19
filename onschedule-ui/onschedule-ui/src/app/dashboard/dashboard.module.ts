@@ -10,6 +10,7 @@ import { DeleteBusComponent } from './delete-bus/delete-bus.component';
 import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.component';
 import { DeleteBookingsComponent } from './delete-bookings/delete-bookings.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     CommonModule,
     DashboardRoutingModule,
     TooltipModule,
+    FormsModule,
   ]
 })
 export class DashboardModule { }
