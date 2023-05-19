@@ -133,6 +133,19 @@ router.get("/viewbookings", async (req, res) => {
   }
 });
 
+router.get("/vbooking", async (req, res) => {
+
+  const nicnum = req.query.nicnum;
+  try {
+    const snapshot = await bookingsModel.where("nicnum", "==", nicnum).get();
+    const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to list Booking' });
+  }
+});
+
 
 router.get("/vcancel", async (req, res) => {
 
@@ -153,9 +166,9 @@ router.delete("/deletebookings", async (req, res) => {
   try {
 
     //res.send({ date: datetime });
-    const snapshot = await bookingsModel.where('time', '==', datetime).get(); // Get bookings that have already passed
-    const deletePromises = snapshot.docs.map(doc => doc.ref.delete()); // Create an array of promises to delete each booking
-    await Promise.all(deletePromises); // Delete all bookings asynchronously
+    const snapshot = await bookingsModel.where('time', '==', datetime).get();
+    const deletePromises = snapshot.docs.map(doc => doc.ref.delete());
+    await Promise.all(deletePromises);
     res.send({ status: 200, message: 'Bookings deleted successfully' });
   } catch (error) {
     console.error(error);
