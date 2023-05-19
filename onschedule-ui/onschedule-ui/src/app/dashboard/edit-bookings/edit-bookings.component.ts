@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BookingsService } from '../../services/bookings.service';
 import Swal from 'sweetalert2';
 import { BusesService } from 'src/app/services/buses.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-edit-bookings',
@@ -116,6 +117,7 @@ export class EditBookingsComponent implements OnInit, AfterViewInit {
         const name = document.querySelector(".name") as HTMLInputElement
         const phone = document.querySelector(".phone") as HTMLInputElement
         const route = document.querySelector(".route") as HTMLInputElement
+        const cseat = document.querySelector(".seatnum") as HTMLInputElement
 
         const busnum = document.querySelector(".busnum") as HTMLInputElement
         const amount = document.querySelector(".amount") as HTMLInputElement
@@ -133,6 +135,34 @@ export class EditBookingsComponent implements OnInit, AfterViewInit {
         let busnumv = busnum.value;
         let amountv = amount.value;
         let timev = time.value;
+        let cS = cseat.value;
+
+        // console.log(seatnumv);
+        const seat = seatnumv.split(',');
+        const CSeat = cS.split(',');
+        //console.log(seat);
+        //console.log(this.vBusList.id);
+        //console.log(CSeat);
+
+        const newSeatStatus = Array.from({ length: this.vBusList.sstatus.length }, (_, index) => {
+          const seatNumber = index + 1;
+          const existingStatus = this.vBusList.sstatus[index];
+
+          if (existingStatus === '0' && !seat.includes(seatNumber.toString())) {
+            return '0';
+          } else if (CSeat.includes(seatNumber.toString())) {
+            return '1';
+          } else {
+            return seat.includes(seatNumber.toString()) ? '0' : existingStatus;
+          }
+        });
+
+
+        console.log(newSeatStatus);
+
+        this.busService.updateSeatStatus(this.vBusList.id, this.vBusList.vnum, this.vBusList.dname, this.vBusList.cname, this.vBusList.phone, this.vBusList.route, this.vBusList.dt, this.vBusList.at, this.vBusList.availability, this.vBusList.price, newSeatStatus).subscribe(data => {
+          console.log(data);
+        });
 
         //alert(datetimev + " " + nicnumv + " " + namev + " " + phonev + " " + routev + " " + seatnumv + " " + busnumv + " " + amountv + " " + timev + " " + id);
 
