@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
       window.location.href = "http://localhost:4200/login";
     }
 
-    /*this.refreshIntervalId = setInterval(() => {
+    this.refreshIntervalId = setInterval(() => {
       this.ngZone.run(() => {
         if (this.searchResults) {
           this.bookingsList = this.searchResults; // Use search results
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
           this.deleteBooking();
         }
       });
-    }, 3000);*/
+    }, 3000);
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
@@ -348,8 +348,8 @@ export class DashboardComponent implements OnInit {
         } else {
           this.bookingsList = this.vBList;
         }
-        // clearInterval(this.rfBtn);
-        // clearInterval(this.refreshIntervalId);
+        clearInterval(this.rfBtn);
+        clearInterval(this.refreshIntervalId);
       });
     }
   }
@@ -380,6 +380,8 @@ export class DashboardComponent implements OnInit {
         } else {
           this.busList = this.vBusList;
         }
+        clearInterval(this.rfBtn);
+        clearInterval(this.refreshIntervalId);
       });
     }
   }
@@ -410,6 +412,8 @@ export class DashboardComponent implements OnInit {
         } else {
           this.TransactionList = this.Tlist;
         }
+        clearInterval(this.rfBtn);
+        clearInterval(this.refreshIntervalId);
       });
     }
   }
@@ -440,6 +444,8 @@ export class DashboardComponent implements OnInit {
         } else {
           this.FeedbackList = this.Flist;
         }
+        clearInterval(this.rfBtn);
+        clearInterval(this.refreshIntervalId);
       });
     }
   }
@@ -470,6 +476,8 @@ export class DashboardComponent implements OnInit {
         } else {
           this.CbookingsList = this.Clist;
         }
+        clearInterval(this.rfBtn);
+        clearInterval(this.refreshIntervalId);
       });
     }
   }
@@ -485,7 +493,7 @@ export class DashboardComponent implements OnInit {
     this.getCBookingsList();
     this.deleteBooking();
 
-    /*this.rfBtn = setInterval(() => {
+    this.rfBtn = setInterval(() => {
       this.ngZone.run(() => {
         this.getBookingsList();
         this.getBusList();
@@ -495,7 +503,7 @@ export class DashboardComponent implements OnInit {
         this.deleteBooking();
         // }
       });
-    }, 3000);*/
+    }, 3000);
   }
 
   refreshBus() {
@@ -507,6 +515,18 @@ export class DashboardComponent implements OnInit {
     this.getFeedbackList();
     this.getCBookingsList();
     this.deleteBooking();
+
+    this.rfBtn = setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+        this.getFeedbackList();
+        this.getCBookingsList();
+        this.deleteBooking();
+        // }
+      });
+    }, 3000);
   }
 
   refreshT() {
@@ -518,6 +538,18 @@ export class DashboardComponent implements OnInit {
     this.getFeedbackList();
     this.getCBookingsList();
     this.deleteBooking();
+
+    this.rfBtn = setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+        this.getFeedbackList();
+        this.getCBookingsList();
+        this.deleteBooking();
+        // }
+      });
+    }, 3000);
   }
   refreshF() {
     this.searchResults = '';
@@ -528,6 +560,18 @@ export class DashboardComponent implements OnInit {
     this.getFeedbackList();
     this.getCBookingsList();
     this.deleteBooking();
+
+    this.rfBtn = setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+        this.getFeedbackList();
+        this.getCBookingsList();
+        this.deleteBooking();
+        // }
+      });
+    }, 3000);
   }
 
   refreshC() {
@@ -539,6 +583,18 @@ export class DashboardComponent implements OnInit {
     this.getFeedbackList();
     this.getCBookingsList();
     this.deleteBooking();
+
+    this.rfBtn = setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+        this.getFeedbackList();
+        this.getCBookingsList();
+        this.deleteBooking();
+        // }
+      });
+    }, 3000);
   }
 
 }
