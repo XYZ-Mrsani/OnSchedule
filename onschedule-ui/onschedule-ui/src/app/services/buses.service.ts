@@ -38,4 +38,9 @@ export class BusesService {
     let url = environment.BUSES_BASE_URL + environment.BUSES.VBUS + busnum;
     return this.httpClient.get(url);
   }
+
+  updateSeatStatus(id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus) {
+    let url = environment.BUSES_BASE_URL + environment.BUSES.UPDATE_SEAT;
+    return this.httpClient.put(url, { id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus });
+  }
 }
