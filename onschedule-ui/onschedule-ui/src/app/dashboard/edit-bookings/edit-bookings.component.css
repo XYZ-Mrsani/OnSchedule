@@ -242,4 +242,5 @@
 .red {
     background-color: red;
     font-weight: bold;
+    pointer-events: none;
 }
