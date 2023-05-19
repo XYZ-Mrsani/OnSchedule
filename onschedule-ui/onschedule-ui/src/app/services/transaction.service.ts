@@ -13,4 +13,9 @@ export class TransactionService {
     let url = environment.TRANSACTION_BASE_URL + environment.TRANSACTION.GET_ALL_TRANSACTION;
     return this.httpClient.get(url);
   }
+
+  viewTransaction(nicnum) {
+    let url = environment.TRANSACTION_BASE_URL + environment.TRANSACTION.VIEW_TRANSACTION + nicnum;
+    return this.httpClient.get(url);
+  }
 }
