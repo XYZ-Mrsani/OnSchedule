@@ -532,7 +532,7 @@ export class DashboardComponent implements OnInit {
 
   refreshC() {
     this.searchResults = '';
-    this.searchTerm3 = '';
+    this.searchTerm4 = '';
     this.getBookingsList();
     this.getBusList();
     this.getTransactionList();
