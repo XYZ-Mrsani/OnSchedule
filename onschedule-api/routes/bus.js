@@ -47,7 +47,7 @@ router.get("/vbus", async (req, res) => {
   const busnum = req.query.busnum;
   try {
     const snapshot = await busModel.where("vnum", "==", busnum).get();
-    const list = snapshot.docs.map((doc) => doc.data());
+    const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     const recordCount = list.length;
     res.send({ status: 200, recordCount: recordCount, results: list });
   } catch (error) {
@@ -85,6 +85,33 @@ router.delete("/delete", async (req, res) => {
   } catch (error) {
     res.status(400).send({ status: 400, message: 'Unable to Delete Bus' });
   }
+});
+
+router.put('/updateseat', async (req, res) => {
+
+  try {
+    const { id, vnum, dname, cname, phone, route, dt, at, availability, price, sstatus } = req.body;
+    //const busRef = await busModel.doc(id).get();
+    //const busData = busRef.data();
+
+    const updatedSStatus = sstatus.map(Number);
+    // Update the seat status in the existing bus document
+    //busData.sstatus = updatedSStatus;
+    console.log(updatedSStatus);
+
+    // Save the updated bus document back to the database
+   // await busModel.doc(id).set({ sstatus: updatedSStatus });
+
+    const updateBus = new Bus(id, vnum, dname, cname, phone, route, dt, at, availability, price, updatedSStatus);
+
+    await busModel.doc(id).update(updateBus.toFirebaseData());
+    
+    res.status(200).send({ status: 200, message: 'Seat status updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ status: 500, message: 'Unable to update seat status' });
+  }
+
 });
 
 module.exports = router;
