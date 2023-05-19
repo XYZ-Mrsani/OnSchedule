@@ -90,11 +90,14 @@
                     <h2 class="font-weight-bold">Bookings</h2>
                     <div class="d-flex">
                         <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
-                            placeholder="Search Bookings" />
-                        <div class="input-group-append">
-                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                            placeholder="Enter NIC Number" [(ngModel)]="searchTerm" />
+                        <div class="input-group-append d-flex">
+                            <a class="btn btn-success m-1 mx-2" (click)="searchMe()">
                                 Search
-                            </button>
+                            </a>
+                            <a class="btn btn-primary m-1" (click)="refresh()">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -118,6 +121,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr *ngFor="let bookings of bookingsList">
                             <td>{{bookings.datetime}}</td>
                             <td>{{bookings.nicnum}}</td>
@@ -144,11 +148,14 @@
                     <h2 class="font-weight-bold">Bus Details</h2>
                     <div class="d-flex">
                         <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
-                            placeholder="Search Route" />
-                        <div class="input-group-append">
-                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                            placeholder="Enter Bus Number" [(ngModel)]="searchTerm1" />
+                        <div class="input-group-append d-flex">
+                            <a class="btn btn-success m-1 mx-2" (click)="searchBus()">
                                 Search
-                            </button>
+                            </a>
+                            <a class="btn btn-primary m-1" (click)="refreshBus()">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary m-1" data-bs-toggle="modal"
@@ -200,11 +207,14 @@
                     <h2 class="font-weight-bold">Transacions Details</h2>
                     <div class="d-flex">
                         <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
-                            placeholder="Search Transactions" />
-                        <div class="input-group-append">
-                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                            placeholder="Enter NIC Number" [(ngModel)]="searchTerm2" />
+                        <div class="input-group-append d-flex">
+                            <a class="btn btn-success m-1 mx-2 " (click)="searchT()">
                                 Search
-                            </button>
+                            </a>
+                            <a class="btn btn-primary m-1" (click)="refreshT()">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -242,11 +252,14 @@
                     <h2 class="font-weight-bold">Passengers Feedback</h2>
                     <div class="d-flex">
                         <input type="text" class="form-control border-gray rounded-pill" style="max-width: 400px"
-                            placeholder="Search Feedback" />
-                        <div class="input-group-append">
-                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                            placeholder="Enter Bus Number" [(ngModel)]="searchTerm3" />
+                        <div class="input-group-append d-flex">
+                            <a class="btn btn-success m-1 mx-2 " (click)="searchFeedback()">
                                 Search
-                            </button>
+                            </a>
+                            <a class="btn btn-primary m-1" (click)="refreshF()">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -287,11 +300,14 @@
                     <h2 class="font-weight-bold">Cancelled Bookings</h2>
                     <div class="d-flex">
                         <input type="text" class="form-control border-gray rounded-pill" style="width: 220px"
-                            placeholder="Search Cancelled Bookings" />
-                        <div class="input-group-append">
-                            <button class="btn btn-success m-1 mx-2 search-button" onclick="search()">
+                            placeholder="Enter NIC Number" [(ngModel)]="searchTerm4" />
+                        <div class="input-group-append d-flex">
+                            <button class="btn btn-success m-1 mx-2" (click)="searchCB()">
                                 Search
                             </button>
+                            <a class="btn btn-primary m-1" (click)="refreshC()">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
