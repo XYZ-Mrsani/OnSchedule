@@ -44,4 +44,17 @@ router.get("/list", async (req, res) => {
     }
 });
 
+router.get("/viewt", async (req, res) => {
+    const nicnum = req.query.nicnum;
+
+    try {
+        const snapshot = await transactionModel.where("nicnum", "==", nicnum).get();
+        const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const recordCount = list.length;
+        res.send({ status: 200, recordCount: recordCount, results: list });
+    } catch (error) {
+        res.send(400).send({ status: 400, message: 'Unable to list Transaction' })
+    }
+});
+
 module.exports = router;
