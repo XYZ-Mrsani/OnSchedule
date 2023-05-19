@@ -27,6 +27,27 @@ export class DashboardComponent implements OnInit {
   CbookingsList: any;
   vBookingsDetails: any;
   vBookingsList: any;
+  vBDetails: any;
+  vBList: any;
+  searchResults: any;
+  vBusDetails: any;
+  vBusList: any;
+  Tdetails: any;
+  Tlist: any;
+  Fdetails: any;
+  Flist: any;
+  Cdetails: any;
+  Clist: any;
+
+  searchTerm: string = '';
+  searchTerm1: String = '';
+  searchTerm2: String = '';
+  searchTerm3: String = '';
+  searchTerm4: String = '';
+  refreshIntervalId: any;
+  loading: boolean = false;
+
+  rfBtn: any;
 
 
   constructor(private bookingsService: BookingsService, private busesService: BusesService, private transactionService: TransactionService, private passengerService: PassengerService, private ngZone: NgZone) { }
@@ -45,16 +66,20 @@ export class DashboardComponent implements OnInit {
       window.location.href = "http://localhost:4200/login";
     }
 
-    setInterval(() => {
+    /*this.refreshIntervalId = setInterval(() => {
       this.ngZone.run(() => {
-        this.getBookingsList();
-        this.getBusList();
-        this.getTransactionList();
-        this.getFeedbackList();
-        this.getCBookingsList();
-        this.deleteBooking();
+        if (this.searchResults) {
+          this.bookingsList = this.searchResults; // Use search results
+        } else {
+          this.getBookingsList();
+          this.getBusList();
+          this.getTransactionList();
+          this.getFeedbackList();
+          this.getCBookingsList();
+          this.deleteBooking();
+        }
       });
-    }, 5000);
+    }, 3000);*/
 
     $(".sidebar ul li").on("click", function () {
       $(".sidebar ul li.active").removeClass("active");
@@ -296,6 +321,224 @@ export class DashboardComponent implements OnInit {
         console.log(data);
       });
     }
+  }
+
+  searchMe() {
+    if (this.searchTerm == '') {
+      Swal.fire({
+        title: "Please! Enter Passenger NIC Number to Search",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.bookingsService.vBooking(this.searchTerm).subscribe(data => {
+        this.vBDetails = data;
+        this.vBList = this.vBDetails.results;
+        console.log(this.vBList);
+        if (this.vBList.length == 0) {
+          Swal.fire({
+            title: "No bookings found!",
+            icon: "warning",
+            iconColor: "#FFA500",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          this.bookingsList = this.vBList;
+        }
+        // clearInterval(this.rfBtn);
+        // clearInterval(this.refreshIntervalId);
+      });
+    }
+  }
+
+  searchBus() {
+    if (this.searchTerm1 == '') {
+      Swal.fire({
+        title: "Please! Enter Bus Number to Search",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.busesService.vbus(this.searchTerm1).subscribe(data => {
+        this.vBusDetails = data;
+        this.vBusList = this.vBusDetails.results;
+        console.log(this.vBusList);
+
+        if (this.vBusList.length == 0) {
+          Swal.fire({
+            title: "No Bus found this vehicle number!",
+            icon: "warning",
+            iconColor: "#FFA500",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          this.busList = this.vBusList;
+        }
+      });
+    }
+  }
+
+  searchT() {
+    if (this.searchTerm2 == '') {
+      Swal.fire({
+        title: "Please! Enter NIC Number to Search",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.transactionService.viewTransaction(this.searchTerm2).subscribe(data => {
+        this.Tdetails = data;
+        this.Tlist = this.Tdetails.results;
+        console.log(this.Tlist);
+
+        if (this.Tlist.length == 0) {
+          Swal.fire({
+            title: "No Transaction found!",
+            icon: "warning",
+            iconColor: "#FFA500",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          this.TransactionList = this.Tlist;
+        }
+      });
+    }
+  }
+
+  searchFeedback() {
+    if (this.searchTerm3 == '') {
+      Swal.fire({
+        title: "Please! Enter Bus Number to Search",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.passengerService.vFeedback(this.searchTerm3).subscribe(data => {
+        this.Fdetails = data;
+        this.Flist = this.Fdetails.results;
+        console.log(this.Flist);
+
+        if (this.Flist.length == 0) {
+          Swal.fire({
+            title: "No Feedback found!",
+            icon: "warning",
+            iconColor: "#FFA500",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          this.FeedbackList = this.Flist;
+        }
+      });
+    }
+  }
+
+  searchCB() {
+    if (this.searchTerm4 == '') {
+      Swal.fire({
+        title: "Please! Enter Passenher NIC Number to Search",
+        icon: "warning",
+        iconColor: "#FFA500",
+        confirmButtonColor: "green",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      this.bookingsService.vCancel(this.searchTerm4).subscribe(data => {
+        this.Cdetails = data;
+        this.Clist = this.Cdetails.results;
+        console.log(this.Clist);
+
+        if (this.Clist.length == 0) {
+          Swal.fire({
+            title: "No Transaction found!",
+            icon: "warning",
+            iconColor: "#FFA500",
+            confirmButtonColor: "green",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          this.CbookingsList = this.Clist;
+        }
+      });
+    }
+  }
+
+  refresh() {
+
+    this.searchResults = '';
+    this.searchTerm = '';
+    this.getBookingsList();
+    this.getBusList();
+    this.getTransactionList();
+    this.getFeedbackList();
+    this.getCBookingsList();
+    this.deleteBooking();
+
+    /*this.rfBtn = setInterval(() => {
+      this.ngZone.run(() => {
+        this.getBookingsList();
+        this.getBusList();
+        this.getTransactionList();
+        this.getFeedbackList();
+        this.getCBookingsList();
+        this.deleteBooking();
+        // }
+      });
+    }, 3000);*/
+  }
+
+  refreshBus() {
+    this.searchResults = '';
+    this.searchTerm1 = '';
+    this.getBookingsList();
+    this.getBusList();
+    this.getTransactionList();
+    this.getFeedbackList();
+    this.getCBookingsList();
+    this.deleteBooking();
+  }
+
+  refreshT() {
+    this.searchResults = '';
+    this.searchTerm2 = '';
+    this.getBookingsList();
+    this.getBusList();
+    this.getTransactionList();
+    this.getFeedbackList();
+    this.getCBookingsList();
+    this.deleteBooking();
+  }
+  refreshF() {
+    this.searchResults = '';
+    this.searchTerm3 = '';
+    this.getBookingsList();
+    this.getBusList();
+    this.getTransactionList();
+    this.getFeedbackList();
+    this.getCBookingsList();
+    this.deleteBooking();
+  }
+
+  refreshC() {
+    this.searchResults = '';
+    this.searchTerm3 = '';
+    this.getBookingsList();
+    this.getBusList();
+    this.getTransactionList();
+    this.getFeedbackList();
+    this.getCBookingsList();
+    this.deleteBooking();
   }
 
 }
