@@ -133,6 +133,21 @@ router.get("/viewbookings", async (req, res) => {
   }
 });
 
+
+router.get("/vcancel", async (req, res) => {
+
+  const nicnum = req.query.nicnum;
+  try {
+    const snapshot = await bookingsModel.where("nicnum", "==", nicnum).get();
+    const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const recordCount = list.length;
+    res.send({ status: 200, recordCount: recordCount, results: list });
+  } catch (error) {
+    res.status(400).send({ status: 400, message: 'Unable to list Booking' });
+  }
+});
+
+
 router.delete("/deletebookings", async (req, res) => {
 
   try {
