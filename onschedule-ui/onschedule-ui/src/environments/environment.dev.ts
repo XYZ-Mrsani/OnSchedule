@@ -7,7 +7,7 @@ export const environment = {
         GET_ALL_CANCEL_BOOKINGS: 'listcancel',
         VIEW_BOOKINGS: 'viewbookings?id=',
         DELETE: 'delete?id=',
-        DELETE_BOOKINGS: 'deletebookings',
+        DELETE_BOOKINGS: 'deletebookings?datetime=',
         UPDATE: 'update?id=',
         V_BOOKING: 'vbooking?nicnum=',
         V_C_BOOKING: 'vcancel?nicnum='

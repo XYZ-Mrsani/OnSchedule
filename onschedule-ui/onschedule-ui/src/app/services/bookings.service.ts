@@ -28,8 +28,8 @@ export class BookingsService {
     return this.httpClient.delete(url);
   }
 
-  deleteBookings() {
-    let url = environment.Bookings_BASE_URL + environment.BOOKINGS.DELETE_BOOKINGS;
+  deleteBookings(datetime) {
+    let url = environment.Bookings_BASE_URL + environment.BOOKINGS.DELETE_BOOKINGS + datetime;
     return this.httpClient.delete(url);
   }
 
