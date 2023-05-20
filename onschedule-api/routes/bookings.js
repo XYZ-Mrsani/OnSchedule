@@ -164,11 +164,12 @@ router.get("/vcancel", async (req, res) => {
 router.delete("/deletebookings", async (req, res) => {
 
   try {
+    let dTime = req.query.datetime;
 
-    //res.send({ date: datetime });
-    const snapshot = await bookingsModel.where('time', '==', datetime).get();
+    const snapshot = await bookingsModel.where('time', '==', dTime).get();
     const deletePromises = snapshot.docs.map(doc => doc.ref.delete());
     await Promise.all(deletePromises);
+    // console.log(datetime);
     res.send({ status: 200, message: 'Bookings deleted successfully' });
   } catch (error) {
     console.error(error);
