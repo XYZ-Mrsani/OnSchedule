@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'dashboard/deletebus/:id', component: DeleteBusComponent },
   { path: 'dashboard/editfeedback/:id', component: EditPassengerComponent },
   { path: 'dashboard/deletefeedback/:id', component: DeleteFeedbackComponent },
-  { path: 'dashboard/delete/:id', component: DeleteBookingsComponent },
+  { path: 'dashboard/delete/:id/:seatnum/:busnum', component: DeleteBookingsComponent },
   
 
   
