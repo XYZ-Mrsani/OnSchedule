@@ -137,7 +137,8 @@
                                 <a class="btn btn-success" [routerLink]="['edit',bookings.id]">Edit</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger delete-B" [routerLink]="['delete',bookings.id]">Cancel</a>
+                                <a class="btn btn-danger delete-B"
+                                    [routerLink]="['delete',bookings.id, bookings.seatnum, bookings.busnum]">Cancel</a>
                             </td>
                         </tr>
                     </tbody>
