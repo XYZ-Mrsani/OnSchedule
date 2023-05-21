@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
         const meridian = now.getHours() >= 12 ? 'PM' : 'AM';
 
         // Concatenate date and time in the desired format
-        datetime = `${year}-${month}-${day} ${hours}:${minutes} ${meridian}`;
+        datetime = `${year}-${month}-${day} ${hours}.${minutes} ${meridian}`;
       });
     }, 3000);
 
